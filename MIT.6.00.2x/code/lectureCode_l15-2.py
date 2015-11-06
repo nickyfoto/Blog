@@ -66,8 +66,8 @@ def flipPlot(minExp, maxExp, numTrials):
     pylab.semilogx()
     pylab.semilogy()
 
-flipPlot(4, 20, 20)
-pylab.show()
+# flipPlot(4, 20, 20)
+# pylab.show()
 
 
 
@@ -123,8 +123,8 @@ def flipPlot2(minExp, maxExp, numTrials):
     pylab.semilogx()
     pylab.semilogy()
 
-##flipPlot2(4, 20, 20)
-##pylab.show()
+flipPlot2(4, 20, 20)
+pylab.show()
 
 
 
