@@ -66,8 +66,8 @@ def flipPlot(minExp, maxExp, numTrials):
     pylab.semilogx()
     pylab.semilogy()
 
-##flipPlot(4, 20, 20)
-##pylab.show()
+flipPlot(4, 20, 20)
+pylab.show()
 
 
 
@@ -110,7 +110,7 @@ def flipPlot2(minExp, maxExp, numTrials):
     pylab.title('Mean abs(#Heads - #Tails) ('
                 + str(numTrials) + ' Trials)')
     pylab.xlabel('Number of Flips')
-    pylab.ylabel('Mean abs(#Heads - #Tails'))
+    pylab.ylabel('Mean abs(#Heads - #Tails)')
     pylab.plot(xAxis, meanDiffs, 'bo')
     pylab.semilogx()
     pylab.semilogy()
