@@ -18,4 +18,6 @@ github_username:  nickyfoto
 markdown: kramdown
 kramdown:
     auto_ids: false
+    input: GFM
+    hard_wrap: false
 permalink: /entries/:title
