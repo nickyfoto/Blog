@@ -16,3 +16,4 @@ github_username:  nickyfoto
 
 # Build settings
 markdown: kramdown
+permalink: /entries/:title
