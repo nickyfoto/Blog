@@ -6,4 +6,9 @@ author: "Huang Qiang"
 tags: [jekyll, blog]
 ---
 
-不觉得wordpress好用，虽然被ghost吸引过，但感觉还是不适合技术类的文章。本来想把技术类的文章写在github的某个project的wiki里。但无奈文字多了手动归类实在不方便，于是，终于还是用上了jekyll。方便。
+不觉得wordpress好用，虽然被ghost吸引过，但感觉还是不适合技术类的文章。本来想把技术类的文章写在github的某个project的wiki里。但无奈文字多了手动归类实在不方便，于是，终于还是用上了jekyll。它有几个优点。
+
+* 不需要部署在自己的服务器上，github.io天然支持。
+* markdown直接撰写发布。
+* 无需数据库，就省了适配转移等问题。
+* 前端可以弯曲自定义。
