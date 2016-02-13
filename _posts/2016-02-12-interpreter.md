@@ -330,7 +330,7 @@ apply把过程分为两类，一类调用apply-primitive-procedure去应用基�
 
 求值器需要对环境的操作。环境就是a sequence of frames。每个框架都是a table of bindings that associate variables with their corresponding values. 我们针对环境有下列操作：
 
-{% gist nickyfoto/5edce9213004aea5cfc6 %}
+
 
 
 
