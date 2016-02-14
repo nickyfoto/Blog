@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "61AS Unit 4 解释器的实现"
+title:  "61AS Unit 4 解释器的实现 eval"
 date:   2016-02-12
 author: "Huang Qiang"
-tags: [61as, interpreter, sicp]
+tags: [61as, interpreter, sicp, scheme]
 ---
 
 >学习程序语言的最好方式就是实现一个程序语言。这并不需要一个完整的编译器，而只需要写一些简单的解释器，实现最基本的功能。之后你就会发现，所有语言的新特性你都大概知道可以如何实现，而不只停留在使用者的水平。
@@ -74,13 +74,34 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
         (else false)))      
 ```
 
-首先碰到的是`self-evaluating?`。只有number和string可以self-evaluate。
+首先碰到的是`self-evaluating?`。只有number和string可以self-evaluate。`number?`和`string?`解释器中都没有定义。
 
 ```scheme
 (define (variable? exp) (symbol? exp)) 
 ```
 
-如果是variable，则要在env中lookup它的值。
+如果是variable，则要在env中lookup它的值。`symbol?`解释器也没有定义。
+
+```scheme
+(define (lookup-variable-value var env)
+  (define (env-loop env)
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env)))
+            ((eq? var (car vars))
+             (car vals))
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment)
+        (error "Unbound variable" var)
+        (let ((frame (first-frame env)))
+          (scan (frame-variables frame)
+                (frame-values frame)))))
+  (env-loop env)) 
+```
+
+要在一个环境中查找一个变量，就需要扫描第一个框架里的变量表。如果在这里找到了所需的变量，那么就返回与之对应的值表里的对应元素。如果当前框架找不到，就要到它外围环境里去找，并继续下去。如果遇到了空环境，则发出一个“未约束变量”的错误信号。
+
+---
 
 ### Special Forms
 
@@ -100,107 +121,11 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
   (tagged-list? exp 'quote))
 ```
 
-利用`tagged-list?`可以处理parse一系列情况。
-
-#### Special Form: Lambda
-
-```scheme
-(define (lambda? exp) (tagged-list? exp 'lambda))
-(define (lambda-parameters exp) (cadr exp))
-(define (lambda-body exp) (cddr exp))
-```
-
-提取这个lambda的body和参数。
-
-#### Special Form: Sequences
-
-```scheme
-(define (begin? exp) (tagged-list? exp 'begin))
-(define (begin-actions exp) (cdr exp))
-(define (last-exp? seq) (null? (cdr seq)))
-(define (first-exp seq) (car seq))
-(define (rest-exps seq) (cdr seq))
-
-(define (eval-sequence exps env)
-  (cond ((last-exp? exps) (mc-eval (first-exp exps) env))
-        (else (mc-eval (first-exp exps) env)
-              (eval-sequence (rest-exps exps) env))))
-```
-
-* `Begin` 把多个expression放到一个expression里面。它要求按出现顺序对它的子expression求值。
-* `Eval-sequence` is used by apply to evaluate the sequence of expressions in a procedure body. It is also used by `eval` to evaluate the sequence of expressions in a `begin` expression. 它拿 a sequence of expressions 和env做参数。返回最后一个exp的value。
-
-#### Special Form: Conditionals
-
-```scheme
-(define (true? x)
-  (not (eq? x false)))
-(define (false? x)
-  (eq? x false))
-  
-(define (if? exp) (tagged-list? exp 'if))
-(define (if-predicate exp) (cadr exp))
-(define (if-consequent exp) (caddr exp))
-(define (if-alternative exp)
-  (if (not (null? (cdddr exp)))
-      (cadddr exp)
-      'false))
-  
-(define (eval-if exp env)
-  (if (true? (mc-eval (if-predicate exp) env))
-      (eval (if-consequent exp) env)
-      (eval (if-alternative exp) env)))
-```
-
-`eval-if`对if expression的predicate部分进行求值。如果true，则对consequence求值，否则对alternative求值。`if-predicate` 用于被解释的语言，求出来的值用`true?`来判断。然后交由解释器本身的if来判断执行。这里体现了解释器所用的语言和被解释的语言之间的关系。
-
-```scheme
-(define (make-if predicate consequent alternative)
-  (list 'if predicate consequent alternative))
-  
-(define (cond? exp) (tagged-list? exp 'cond))
-(define (cond-clauses exp) (cdr exp))
-(define (cond-else-clause? clause)
-  (eq? (cond-predicate clause) 'else))
-(define (cond-predicate clause) (car clause))
-(define (cond-actions clause) (cdr clause))
-(define (cond->if exp)
-  (expand-clauses (cond-clauses exp)))
-
-(define (expand-clauses clauses)
-  (if (null? clauses)
-      'false                          ; no else clause
-      (let ((first (car clauses))
-            (rest (cdr clauses)))
-        (if (cond-else-clause? first)
-            (if (null? rest)
-                (sequence->exp (cond-actions first))
-                (error "ELSE clause isn't last -- COND->IF"
-                       clauses))
-            (make-if (cond-predicate first)
-                     (sequence->exp (cond-actions first))
-                     (expand-clauses rest))))))
-```
-
-`cond`被转换为`if`，这样减少了需要特别描述的求值过程的spacial form的数目。当然，这里还用到了`make－if`。通过语法变换（syntactic transformations）的方式实现的exp（例如cond）被称作**derived expressions**。`let`也是这样的。
+利用`tagged-list?`可以处理关键词`quote`，`set!`， `define`， `if`， `lambda`， `begin`， `cond`。
 
 #### Special Form: Assignments and Definitions
 
-```scheme
-(define (eval-assignment exp env)
-  (set-variable-value! (assignment-variable exp)
-                       (mc-eval (assignment-value exp) env)
-                       env)
-  'ok)
-  
-(define (eval-definition exp env)
-  (define-variable! (definition-variable exp)
-                    (mc-eval (definition-value exp) env)
-                    env)
-  'ok)  
-```
-
-这个procedure处理变量赋值。它调用eval，找出需要赋的值，将变量和得到的值传给set-variable-value!，将相关的值安置到指定的环境里。对变量的定义也一样。
+现在我们来看下赋值的形式。抓`set!`。
 
 ```scheme
 (define (assignment? exp)
@@ -208,8 +133,6 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 (define (assignment-variable exp) (cadr exp))
 (define (assignment-value exp) (caddr exp))
 ```
-
-现在我们来看下赋值的形式。抓`set!`。
 
 `define` 有两种形式
 
@@ -239,8 +162,153 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
                    (cddr exp)))) ; body
 ```
 
-以上对exp有不同的判断，最后一个是`application?`，也就是复合表达式（compound expression）时，需要分清operator和operands，然后(apply procedure arguments)，这里procedure就对应operator，arguments对应operands。所以`(list-of-values (operands exp) env)`用来生成参数表。
+```scheme
+(define (eval-assignment exp env)
+  (set-variable-value! (assignment-variable exp)
+                       (mc-eval (assignment-value exp) env)
+                       env)
+  'ok)
+  
+(define (eval-definition exp env)
+  (define-variable! (definition-variable exp)
+                    (mc-eval (definition-value exp) env)
+                    env)
+  'ok)  
+```
 
+赋值和定义变量都是把变量和得到的值传递给`set-variable-value!`和`define-variable!`，由这两个procedure把相关的值安置到环境里。
+
+```scheme
+(define (set-variable-value! var val env)
+  (define (env-loop env)
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env)))
+            ((eq? var (car vars))
+             (set-car! vals val))
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment)
+        (error "Unbound variable -- SET!" var)
+        (let ((frame (first-frame env)))
+          (scan (frame-variables frame)
+                (frame-values frame)))))
+  (env-loop env))  
+```
+
+在需要为某个变量在给定的环境里设置一个新值时，我们需要扫描这个变量，跟过程lookup-variable-value一样，找到这一变量后修改它的值。
+
+```scheme
+(define (define-variable! var val env)
+  (let ((frame (first-frame env)))
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (add-binding-to-frame! var val frame))
+            ((eq? var (car vars))
+             (set-car! vals val))
+            (else (scan (cdr vars) (cdr vals)))))
+    (scan (frame-variables frame)
+          (frame-values frame))))
+```
+
+要定义一个变量，我们需要在第一个框架里查找该变量的约束（binding）。如果找到，就对其进行修改（跟`set-variable-value!`一样）。如果不存在，就在第一个框架中加入`add-binding-to-frame!`这个约束（binding）。
+
+
+
+#### Special Form: Lambda
+
+```scheme
+(define (make-procedure parameters body env)
+  (list 'procedure parameters body env))
+
+(define (lambda? exp) (tagged-list? exp 'lambda))
+(define (lambda-parameters exp) (cadr exp))
+(define (lambda-body exp) (cddr exp))
+```
+
+提取这个lambda的body和参数。然后加上关键词`procedure`交由`compound-procedure?`处理。
+
+#### Special Form: Sequences
+
+```scheme
+(define (begin? exp) (tagged-list? exp 'begin))
+(define (begin-actions exp) (cdr exp))
+(define (last-exp? seq) (null? (cdr seq)))
+(define (first-exp seq) (car seq))
+(define (rest-exps seq) (cdr seq))
+
+(define (eval-sequence exps env)
+  (cond ((last-exp? exps) (mc-eval (first-exp exps) env))
+        (else (mc-eval (first-exp exps) env)
+              (eval-sequence (rest-exps exps) env))))
+```
+
+* `begin` 把多个expression放到一个expression里面。它要求按出现顺序对它的子expression求值。`begin-actions` 取出begin后的exps。
+* `Eval-sequence`递归地对包含在`begin`里的exps求值，如果递归到`last-exp?`则返回它的value。
+
+#### Special Form: Conditionals
+
+```scheme
+(define (true? x)
+  (not (eq? x false)))
+(define (false? x)
+  (eq? x false))
+  
+(define (if? exp) (tagged-list? exp 'if))
+(define (if-predicate exp) (cadr exp))
+(define (if-consequent exp) (caddr exp))
+(define (if-alternative exp)
+  (if (not (null? (cdddr exp)))
+      (cadddr exp)
+      'false))
+  
+(define (eval-if exp env)
+  (if (true? (mc-eval (if-predicate exp) env))
+      (eval (if-consequent exp) env)
+      (eval (if-alternative exp) env)))
+```
+
+`eval-if`把含有if的exp拆成三部分。首先对if expression的predicate部分进行求值。如果true，则对consequence求值，否则对alternative求值。`if-predicate` 用于被解释的语言，求出来的值用`true?`来判断。然后交由解释器本身的if来判断执行。这里体现了解释器所用的语言和被解释的语言之间的关系。
+
+```scheme
+
+(define (sequence->exp seq)
+  (cond ((null? seq) seq)
+        ((last-exp? seq) (first-exp seq))
+        (else (make-begin seq))))
+(define (make-begin seq) (cons 'begin seq))
+
+(define (make-if predicate consequent alternative)
+  (list 'if predicate consequent alternative))
+  
+(define (cond? exp) (tagged-list? exp 'cond))
+(define (cond-clauses exp) (cdr exp))
+(define (cond-else-clause? clause)
+  (eq? (cond-predicate clause) 'else))
+(define (cond-predicate clause) (car clause))
+(define (cond-actions clause) (cdr clause))
+(define (cond->if exp)
+  (expand-clauses (cond-clauses exp)))
+
+(define (expand-clauses clauses)
+  (if (null? clauses)
+      'false                          ; no else clause
+      (let ((first (car clauses))
+            (rest (cdr clauses)))
+        (if (cond-else-clause? first)
+            (if (null? rest)
+                (sequence->exp (cond-actions first))
+                (error "ELSE clause isn't last -- COND->IF"
+                       clauses))
+            (make-if (cond-predicate first)
+                     (sequence->exp (cond-actions first))
+                     (expand-clauses rest))))))
+```
+
+`cond`被转换为`if`，这样减少了需要特别描述的求值过程的spacial form的数目。当然，这里还用到了`make－if`。通过语法变换（syntactic transformations）的方式实现的exp（例如cond）被称作**derived expressions**。`let`也是这样的。
+
+至此special forms结束。
+
+---
 
 ```scheme
 (define (application? exp) (pair? exp))
@@ -255,83 +323,14 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
       '()
       (cons (mc-eval (first-operand exps) env)
         (list-of-values (rest-operands exps) env))))
+
+((application? exp)
+    (apply (mc-eval (operator exp) env)
+      (list-of-values (operands exp) env)))
 ```
 
+如果exp既不是number，也不是string，也不是symbol，也不是其它的special form，那么它就是个pair?，这样的表达式被称为procedure application，或者叫做compound expression。对这样的表达式，我们先求出它的`operator`的value `(mc-eval (operator exp) env)`，再列出它的参数的值 `(list-of-values (operands exp) env))`，最后，通过apply来处理它。
 
-## Apply的实现
-
-apply把过程分为两类，一类调用apply-primitive-procedure去应用基本过程；符合过程要顺序的求值组成该过程体的表达式。求值过程中需要建立相应的环境，环境的构造方式是扩充该过程所携带的基本环境，并加入一个框架，其中将过程的各个形式参数约束于过程调用的实际参数。
-
-```scheme
-(define (apply procedure arguments)
-  (cond ((primitive-procedure? procedure)
-         (apply-primitive-procedure procedure arguments))
-        ((compound-procedure? procedure)
-         (eval-sequence
-           (procedure-body procedure)
-           (extend-environment
-             (procedure-parameters procedure)
-             arguments
-             (procedure-environment procedure))))
-        (else
-         (error
-          "Unknown procedure type -- APPLY" procedure))))
-```
-
-### 复合过程的处理
-
-```scheme
-(define (compound-procedure? p)
-  (tagged-list? p 'procedure))
-
-(define (eval-sequence exps env)
-  (cond ((last-exp? exps) (mc-eval (first-exp exps) env))
-        (else (mc-eval (first-exp exps) env)
-              (eval-sequence (rest-exps exps) env))))
-              
-(define (procedure-body p) (caddr p))
-(define (procedure-parameters p) (cadr p))
-(define (procedure-environment p) (cadddr p))               
-```
-
-### 基本过程的处理
-
-```scheme
-(define (primitive-procedure? proc)
-  (tagged-list? proc 'primitive))
-
-(define (primitive-implementation proc) (cadr proc))
-
-(define primitive-procedures
-  (list (list 'car car)
-        (list 'cdr cdr)
-        (list 'cons cons)
-        (list 'null? null?)
-        <more primitives>
-        ))
-
-(define (primitive-procedure-names)
-  (map car
-       primitive-procedures))
-
-(define (primitive-procedure-objects)
-  (map (lambda (proc) (list 'primitive (cadr proc)))
-       primitive-procedures))
-```
-要应用一个基本过程，就是将实现过程应用于实际参数。
-
-```scheme
-(define (apply-primitive-procedure proc args)
-  (apply-in-underlying-scheme
-   (primitive-implementation proc) args))
-```
-
-### 对环境的操作
-
-求值器需要对环境的操作。环境就是a sequence of frames。每个框架都是a table of bindings that associate variables with their corresponding values. 我们针对环境有下列操作：
-
-
-
-
+---
 
 [1]: http://yinwang0.lofter.com/post/183ec2_47bea8
