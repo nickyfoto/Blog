@@ -269,7 +269,6 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 `eval-if`把含有if的exp拆成三部分。首先对if expression的predicate部分进行求值。如果true，则对consequence求值，否则对alternative求值。`if-predicate` 用于被解释的语言，求出来的值用`true?`来判断。然后交由解释器本身的if来判断执行。这里体现了解释器所用的语言和被解释的语言之间的关系。
 
 ```scheme
-
 (define (sequence->exp seq)
   (cond ((null? seq) seq)
         ((last-exp? seq) (first-exp seq))
@@ -308,6 +307,7 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 至此special forms结束。
 
 ---
+### 过程应用
 
 ```scheme
 (define (application? exp) (pair? exp))
