@@ -137,8 +137,7 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 `define` 有两种形式
 
 * `(define <var> <value>)` 赋值
-* `(define (<var> <parameter1> ... <parametern>)
-  <body>)` 定义procedure
+* `(define (<var> <parameter1> ... <parametern>) <body>)` 定义procedure
 
 后一种形式只是下面这种形式的语法糖。
 
