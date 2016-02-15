@@ -242,7 +242,7 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 ```
 
 * `begin` 把多个expression放到一个expression里面。它要求按出现顺序对它的子expression求值。`begin-actions` 取出begin后的exps。
-* `Eval-sequence`递归地对包含在`begin`里的exps求值，如果递归到`last-exp?`则返回它的value。
+* `eval-sequence`递归地对包含在`begin`里的exps求值，如果递归到`last-exp?`则返回它的value。
 
 #### Special Form: Conditionals
 
@@ -330,7 +330,5 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 ```
 
 如果exp既不是number，也不是string，也不是symbol，也不是其它的special form，那么它就是个pair?，这样的表达式被称为procedure application，或者叫做compound expression。对这样的表达式，我们先求出它的`operator`的value `(mc-eval (operator exp) env)`，再列出它的参数的值 `(list-of-values (operands exp) env))`，最后，通过apply来处理它。
-
----
 
 [1]: http://yinwang0.lofter.com/post/183ec2_47bea8
