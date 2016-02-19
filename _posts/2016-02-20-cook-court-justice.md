@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "呵呵"
-date:   2015-10-16
+date:   2016-10-16
 author: "Huang Qiang"
 tags: [随想, 美国, justice, Apple]
 ---
