@@ -1,3 +1,1 @@
-# Blog
-
-Click [Here](https://github.com/nickyfoto/Blog/wiki)
+[blog](http://nickyfoto.github.io/Blog/)
