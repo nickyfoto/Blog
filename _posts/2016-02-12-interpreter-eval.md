@@ -23,8 +23,6 @@ A basic cycle in which expressions to be evaluated in environments are reduced t
 3. 求值器使我们可以定义复合过程（compound procedures）
 4. 求值器要求提供一批特殊形式 （special forms）求值方式与普通过程不同。
 
-
-
 ![](http://mitpress.mit.edu/sicp/full-text/sicp/book/chapter-4/figs/eval-apply.gif)
 
 ```scheme
