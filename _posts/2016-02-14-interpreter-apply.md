@@ -87,7 +87,7 @@ tags: [61as, interpreter, sicp, scheme]
   ))
 ```
 
-这个初始环境（setup-environment）将从一个list里取得基本过程的名字，以及它们的实现过程。这里的名字不一定要于lisp系统里的名字相同，这里之所以相同是因为我们用scheme解释scheme，如果用scheme解释python，就可以不同了。
+这个初始环境（setup-environment）将从一个list里取得基本过程的名字，以及它们的实现过程。这里的名字不一定要与lisp系统里的名字相同，这里之所以相同是因为我们用scheme解释scheme，如果用scheme解释python，就可以不同了。
 
 ```scheme
 (define (primitive-procedure-names)

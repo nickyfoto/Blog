@@ -12,6 +12,7 @@ title: About
 
 要写的文章：
 
+* 八皇后的scheme解
 * OOP的问题在哪里？
 
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
