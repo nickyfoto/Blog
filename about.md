@@ -14,6 +14,7 @@ title: About
 
 * 八皇后的scheme解
 * OOP的问题在哪里？
+* Why zsh？
 
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
 [2]:https://mitpress.mit.edu/books/little-schemer
