@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "当我们define一个函数的时候到底define了什么"
+title:  "Analyzing Evaluator"
 date:   2016-02-19
 author: "Huang Qiang"
 tags: [61as, interpreter, sicp, scheme]
