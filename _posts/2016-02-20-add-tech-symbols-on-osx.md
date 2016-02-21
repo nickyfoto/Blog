@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "如何输入按键特殊符号"
+title:  "如何输入Mac OS X按键的特殊符号"
 date:   2016-02-20
 author: "Huang Qiang"
 tags: [osx]
