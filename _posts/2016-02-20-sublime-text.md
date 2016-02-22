@@ -66,10 +66,12 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
   
 * [SideBarEnhancements][2]
 * [SublimeLinter][3]
+* [MarkdownEditing][4]
 
 [1]:https://github.com/skuroda/Sublime-AdvancedNewFile
 [2]:https://github.com/titoBouzout/SideBarEnhancements
 [3]:http://www.sublimelinter.com/en/latest/
+[4]:https://github.com/SublimeText-Markdown/MarkdownEditing
 
 
 
