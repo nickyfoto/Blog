@@ -16,6 +16,7 @@ return     | ⏎
 shift      | ⇧
 arrows     |↑↓←→
 delete/backspace |⌫
+ctrl       |^[^ctrl]
 Esc        | ⎋
 
 我们都知道在osx下，点击输入法的Show Emoji & Symbol会调出Emoji以及一些特殊符号的输入面板。
@@ -27,3 +28,5 @@ Esc        | ⎋
 ![](../images/select-technical-symbols.png)
 就会有各种⌨️符号出现在Show Emoji & Symbols里面了。
 ![](../images/technical-symbol.png)
+
+[^ctrl]: ctrl只需要输入shift 6上的^即可

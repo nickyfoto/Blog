@@ -7,7 +7,7 @@ title: About
 
 要读的书：
 
-* [Essentials of Programming Languages][1]
+* [ ] [Essentials of Programming Languages][1]
 * [The Little Schemer][2]
 
 要写的文章：
@@ -15,6 +15,8 @@ title: About
 * 八皇后的scheme解
 * OOP的问题在哪里？
 * Why zsh？
+* Shadowsocks 源码分析
+* cow 源码分析
 
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
 [2]:https://mitpress.mit.edu/books/little-schemer
