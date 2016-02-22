@@ -7,8 +7,8 @@ title: About
 
 要读的书：
 
-* [ ] [Essentials of Programming Languages][1]
-* [The Little Schemer][2]
+- [ ] [Essentials of Programming Languages][1]
+- [The Little Schemer][2]
 
 要写的文章：
 
