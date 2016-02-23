@@ -18,5 +18,10 @@ title: About
 * <input type="checkbox"> Shadowsocks 源码分析
 * <input type="checkbox"> cow 源码分析
 
+要做的项目：
+
+* <input type="checkbox"> aliyun 资源管理软件
+
+
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
 [2]:https://mitpress.mit.edu/books/little-schemer

@@ -28,7 +28,7 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 
 ## 选择
 
-<kbd>⌘</kbd> d 可以连续选中同样的词
+⌘ d 可以连续选中同样的词
 
 ^ ⌘ g 可以选择全文中所有的这个词
 
@@ -37,6 +37,8 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 ⇧ ⌘ L 可以把选中的内容变成column selection
 
 ⌘ i **输入你要定位的word，可以定位到下一个出现的word**
+
+⌘ ⇧ f 可以调出Find in Files...选项，做整个项目中的查找替换
 
 ## Command Palette
 
