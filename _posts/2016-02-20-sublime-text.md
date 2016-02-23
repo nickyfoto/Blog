@@ -28,7 +28,7 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 
 ## 选择
 
-⌘ d 可以连续选中同样的词
+<kbd>⌘</kbd> d 可以连续选中同样的词
 
 ^ ⌘ g 可以选择全文中所有的这个词
 
