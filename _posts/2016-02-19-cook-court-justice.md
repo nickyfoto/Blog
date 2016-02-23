@@ -52,7 +52,7 @@ Tim Cook 这点上是对的，并且看的很清楚，后门不可能只留给�
 
 这件事还没完没了了，苹果又发表了一封[公开信][4][翻译][7]，算是对公众疑问的回答和澄清。
 
-盖茨也出来说话了。他说苹果应该响应政府要求。盖茨这么说并不奇怪。微软07年就加入了美国的[PRISM][5]计划，而苹果是在乔布斯死后的第二年2012年，才加入。
+盖茨也出来说话了。他说苹果应该响应政府要求。盖茨这么说并不奇怪。微软07年就加入了美国的[PRISM][5]计划，而苹果是在乔布斯死后的第二年2012年才加入([来源][8])。
 
 ![美国公司棱镜计划加入时间表](http://images.ifanr.cn/wp-content/uploads/2016/02/Prism_slide_5.jpg)
 
@@ -67,3 +67,4 @@ Tim Cook 这点上是对的，并且看的很清楚，后门不可能只留给�
 [5]:https://en.wikipedia.org/wiki/PRISM_(surveillance_program)
 [6]:http://cn.nytimes.com/technology/20160223/c23apple/
 [7]:http://www.williamlong.info/archives/4522.html
+[8]:http://www.ifanr.com/621848
