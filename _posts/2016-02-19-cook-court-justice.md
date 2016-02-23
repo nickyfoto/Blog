@@ -4,6 +4,7 @@ title:  "呵呵"
 date:   2016-02-19
 author: "Huang Qiang"
 tags: [随想, 美国, justice, Apple]
+comments: true
 ---
 
 对 Tim Cook 没有太多好感，他竭尽所能的守住 Jobs 打下的江山。当然，他对自己也很有自知之明。Jobs 下是不可能藏有另一个 Jobs 的。
