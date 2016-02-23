@@ -4,6 +4,7 @@ title:  "命令行翻墙"
 date:   2016-02-22
 author: "Huang Qiang"
 tags: [osx, proxychains-ng, gfw, shell]
+comments: True
 ---
 
 在mac上用[cow][1]的好处是可以自动加手动的对网站有没有被墙进行判断，坏处是命令行用不了。最近homebrew改进了很多，但是gem还是经常连接失败。之前别人推荐了[proxychains-ng][2]，但是我开始用的时候因为10.11 El Capitan加入了[SIP][3]之后，proxychains-ng就不好用了。
