@@ -46,6 +46,24 @@ Tim Cook 这点上是对的，并且看的很清楚，后门不可能只留给�
 
 那你说法律错了怎么办，那 Cook 也没办法。你们选举的领导人制定的法律你们自己遵守。不是民选的领导人怎么办？不是民选的你们还坚持到现在，也是自作自受，没人救的了你们。所以类似的事情来到中国，还是呵呵。
 
+2月23日更新：
+
+[纽约时报][6]终于把这事扯到了中国身上
+
+这件事还没完没了了，苹果又发表了一封[公开信][4][翻译][7]，算是对公众疑问的回答和澄清。
+
+盖茨也出来说话了。他说苹果应该响应政府要求。盖茨这么说并不奇怪。微软07年就加入了美国的[PRISM][5]计划，而苹果是在乔布斯死后的第二年2012年，才加入。
+
+![美国公司棱镜计划加入时间表](http://images.ifanr.cn/wp-content/uploads/2016/02/Prism_slide_5.jpg)
+
+难怪微软在美国不受待见。
+
+这件事情的核心不是美国政府这次请求是否合理，苹果是否应该解锁这一部手机。它影射的是当政府的权力大到不受制约时怎么办。即使在美国这样三权分立实现最好的国家，政府依然在隐瞒公众的情况下做些不应该做的事情。
+
 [1]:http://www.nytimes.com/2016/02/18/technology/apple-timothy-cook-fbi-san-bernardino.html
 [2]:http://www.apple.com/customer-letter/
 [3]:http://www.nytimes.com/2016/02/14/us/antonin-scalia-death.html
+[4]:http://www.apple.com/customer-letter/answers/
+[5]:https://en.wikipedia.org/wiki/PRISM_(surveillance_program)
+[6]:http://cn.nytimes.com/technology/20160223/c23apple/
+[7]:http://www.williamlong.info/archives/4522.html
