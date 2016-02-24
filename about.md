@@ -13,6 +13,7 @@ title: About
 要写的文章：
 
 * <input type="checkbox"> 八皇后的scheme解
+* <input type="checkbox"> 什么是懂了
 * <input type="checkbox"> OOP的问题在哪里？
 * <input type="checkbox"> Why zsh？
 * <input type="checkbox"> Shadowsocks 源码分析
@@ -21,6 +22,8 @@ title: About
 要做的项目：
 
 * <input type="checkbox"> aliyun 资源管理软件
+* <input type="checkbox"> buy me a coffee
+  - 展示一个项目，受益的人可以打赏。
 
 
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
