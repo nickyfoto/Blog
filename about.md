@@ -7,8 +7,11 @@ title: About
 
 要读的书：
 
+
 - <input type="checkbox"> [Essentials of Programming Languages][1]
 - <input type="checkbox"> [The Little Schemer][2]
+- <input type="checkbox"> [Simply Scheme: Introducing Computer Science][3]
+- <input type="checkbox"> [A Gentle Introduction to Haskell][4]
 
 要写的文章：
 
@@ -28,3 +31,5 @@ title: About
 
 [1]:https://mitpress.mit.edu/books/essentials-programming-languages
 [2]:https://mitpress.mit.edu/books/little-schemer
+[3]:https://www.cs.berkeley.edu/~bh/ss-toc2.html
+[4]:https://www.haskell.org/tutorial/
