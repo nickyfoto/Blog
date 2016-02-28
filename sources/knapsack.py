@@ -1,32 +1,3 @@
----
-layout: post
-title:  "6.00.2x学习笔记Week5 Part1"
-date:   2015-11-12
-author: "Huang Qiang"
-tags: [python, mooc, 6.00.2x]
----
-
-## Optimization Problem
-
-Optimization包含两部分
-
-* An objective function that is to be maximized or minimized. 
-  
-  例如寻找Boston到Istanbul最便宜的机票
-
-* A set of constraints
-
-比较典型的应用
-
-* Shortest path
-* Traveling salesman: 销售员要走过一些城市，如何最大程度避免重复
-* Bin Packing：如何把货物装入集装箱
-* Sequence alignment: two genetic strings. find a way to line them up to maximize the overlap.
-* Knapsack
-
-### Knapsack 背包问题
-
-```python
 import pylab
 
 class Item(object):
@@ -46,19 +17,15 @@ class Item(object):
         return result
 
 def buildItems():
-    names = ['clock', 'painting', 'radio', 'vase', 'book', 'computer']
+    names = ['clock', 'painting', 'radio', 'vase', 'book',
+             'computer']
     vals = [175,90,20,50,10,200]
     weights = [10,9,4,2,1,20]
     Items = []
     for i in range(len(vals)):
         Items.append(Item(names[i], vals[i], weights[i]))
     return Items
-```
-建立`Item Class`, 把所有的`item`组成一个`Items List`。
 
-贪心算法
-
-```python
 def greedy(Items, maxWeight, keyFcn):
     assert type(Items) == list and maxWeight >= 0
     ItemsCopy = sorted(Items, key=keyFcn, reverse = True)
@@ -73,10 +40,7 @@ def greedy(Items, maxWeight, keyFcn):
             totalVal += ItemsCopy[i].getValue()
         i += 1
     return (result, totalVal)
-```
-三种不同的指标：
 
-```python
 def value(item):
     return item.getValue()
 
@@ -85,19 +49,13 @@ def weightInverse(item):
 
 def density(item):
     return item.getValue()/item.getWeight()
-```
-取任意一个指标得出的结果：
 
-```python
 def testGreedy(Items, constraint, getKey):
     taken, val = greedy(Items, constraint, getKey)
     print ('Total value of items taken = ' + str(val))
     for item in taken:
         print '  ', item
-```
-把三种综合在一块：
 
-```python
 def testGreedys(maxWeight = 20):
     Items = buildItems()
     print('Items to choose from:')
@@ -110,40 +68,8 @@ def testGreedys(maxWeight = 20):
     print 'Use greedy by density to fill a knapsack of size', maxWeight
     testGreedy(Items, maxWeight, density)
 
-testGreedys()
-```
-得到：
+# testGreedys()
 
-> ```
-> Items to choose from:
-   <clock, 175.0, 10.0>
-   <painting, 90.0, 9.0>
-   <radio, 20.0, 4.0>
-   <vase, 50.0, 2.0>
-   <book, 10.0, 1.0>
-   <computer, 200.0, 20.0>
-Use greedy by value to fill a knapsack of size 20
-Total value of items taken = 200.0
-   <computer, 200.0, 20.0>
-Use greedy by weight to fill a knapsack of size 20
-Total value of items taken = 170.0
-   <book, 10.0, 1.0>
-   <vase, 50.0, 2.0>
-   <radio, 20.0, 4.0>
-   <painting, 90.0, 9.0>
-Use greedy by density to fill a knapsack of size 20
-Total value of items taken = 255.0
-   <vase, 50.0, 2.0>
-   <clock, 175.0, 10.0>
-   <book, 10.0, 1.0>
-   <radio, 20.0, 4.0>
-```
-
-但这只是按照标准排序，并不是最佳方案。当然，我们可以用brutal force的方法来寻找最佳答案。把所有可能的组合都列出来，取符合限制条件的最大值。
-
-首先写了一个helper function，把数字n转化为小于特定数字的二进制数。
-
-```python
 def dToB(n, numDigits):
     """requires: n is a natural number less than 2**numDigits
       returns a binary string of length numDigits representing the
@@ -156,10 +82,9 @@ def dToB(n, numDigits):
     while numDigits - len(bStr) > 0:
         bStr = '0' + bStr
     return bStr
-```
-然后 Generate a list of lists representing the power set of Items。
 
-```python
+
+
 def genPset(Items):
     """Generate a list of lists representing the power set of Items"""
     numSubsets = 2**len(Items)
@@ -174,11 +99,8 @@ def genPset(Items):
                 elem.append(Items[j])
         pset.append(elem)
     return pset
-```
 
-然后，从中选择best
 
-```python
 def chooseBest(pset, constraint, getVal, getWeight):
     bestVal = 0.0
     bestSet = None
@@ -201,20 +123,8 @@ def testBest():
     for item in taken:
         print '  ', item
 
-testBest()
-```
-得到如下答案：
+# testBest()
 
->```
->Total value of items taken = 275.0
-   <clock, 175.0, 10.0>
-   <painting, 90.0, 9.0>
-   <book, 10.0, 1.0>
-```
-
-当然，更好的办法是decision tree：
-
-```python
 def maxVal(toConsider, avail): 
     if toConsider == [] or avail == 0:
         result = (0, ())
@@ -244,43 +154,5 @@ def smallTest():
         print(item)
     print ('Total value of items taken = ' + str(val))
 
+
 smallTest()
-```
-[Source Code](../sources/knapsack.py)
-
-鉴于背包问题本质上的复杂性是指数型的，所以我们这里介绍一下另外一种可以saving redundant work的方法。思路主要是把partial solution保留下来，不用每次用到的时候都重新算。
-
-最简单的Fibonacci算法：
-
-```python
-def fib(x):
-    assert type(x) == int and x >= 0
-    if x == 0 or x == 1:
-        return 1
-    else:
-        return fib(x-1) + fib(x-2)
-
-def testFib(n):
-    assert type(n) == int and n >=  0
-    for i in range(n):
-        print ('fib of', i, '=', fib(i)) 
-```
-会越算越慢。如果把中间计算结果用dict存起来，就会快很多。**Memoization**
-
-```python
-def fastFib(x, memo):
-    assert type(x) == int and x >= 0 and type(memo) == dict
-    if x == 0 or x == 1:
-        return 1
-    if x in memo:
-        return memo[x]
-    result = fastFib(x-1, memo) + fastFib(x-2, memo)
-    memo[x] = result
-    return result
-
-def testFastFib(n):
-    assert type(n) == int and n >=  0
-    for i in range(n):
-        print ('fib of', i, '=', fastFib(i, {}))
-```
-[Source Code](../sources/memoization.py)

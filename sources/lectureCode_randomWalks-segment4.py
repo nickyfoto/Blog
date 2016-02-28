@@ -1,27 +1,7 @@
----
-layout: post
-title:  "6.00.2x学习笔记Week1 Part2"
-date:   2015-11-05
-author: "Huang Qiang"
-tags: [python, mooc, 6.00.2x]
----
 
-## Turning data into knowledge.
 
-### Simulation
-
-Simulation models can be classified along three dimensions:
-
-* deterministic versus stochastic
-  * Deterministic simulations are completely defined by the model. Rerunning a simulation will not change the outcome. Deterministic simulations are typically used when the system being modeled is too complex to analyze analytically.
-  * Stochastic simulations include randomness. That means that different runs of the same simulation with the same initial conditions can generate different results.
-* static versus dynamic
-* discrete versus continuous
-  * In a discrete model, the values of the pertinent variables are enumerable for example, the integers. 
-  * In a continuous model, they're not enumerable.
-
-```python
 class Location(object):
+    
     def __init__(self, x, y):
         """x and y are floats"""
         self.x = x
@@ -46,8 +26,11 @@ class Location(object):
     
     def __str__(self):
         return '<' + str(self.x) + ', ' + str(self.y) + '>'
-```
-```python
+
+
+
+
+
 class Field(object):
     
     def __init__(self):
@@ -71,59 +54,60 @@ class Field(object):
         if not drunk in self.drunks:
             raise ValueError('Drunk not in field')
         return self.drunks[drunk]
-```
-```python
+
+
+
+
+
+
+
+
+
+
 import random
+
 
 class Drunk(object):
     def __init__(self, name):
         self.name = name
     def __str__(self):
         return 'This drunk is named ' + self.name
-```
-```python
+    
 class UsualDrunk(Drunk):
     def takeStep(self):
         stepChoices =\
             [(0.0,1.0), (0.0,-1.0), (1.0, 0.0), (-1.0, 0.0)]
         return random.choice(stepChoices)
-```
-模拟醉汉的随机走向，建了3个class。`UsualDrunk`继承`Drunk`。
 
-```python
+
 def walk(f, d, numSteps):
-    """一个醉汉(d)在一个田里(f)走了几步(numSteps)"""
-    start = f.getLoc(d) # get initial location
+    start = f.getLoc(d)
     for s in range(numSteps):
         f.moveDrunk(d)
     return(start.distFrom(f.getLoc(d)))
 
-def simWalks(numSteps, numTrials):
-    homer = UsualDrunk('Homer')
-    origin = Location(0, 0)
-    distances = []
-    for t in range(numTrials):
-        f = Field()
-        f.addDrunk(homer, origin)
-        distances.append(walk(f, homer, numSteps))
-    return distances
 
-def drunkTest(numTrials = 20):
-    for numSteps in [10, 100, 1000, 10000]:
-        distances = simWalks(numSteps, numTrials)
-        print 'Random walk of ' + str(numSteps) + ' steps'
-        print ' Mean =', sum(distances)/len(distances)
-        print ' Max =', max(distances), 'Min =', min(distances)
-        
-drunkTest()
-```
-给出了3个function。
 
-`random.seed(0)`可以帮助debug。
+## import pylab
 
-为了了解随着steps增加和distance之间的关系，我们可以用pylab把他们画出来。
+## #set line width
+## pylab.rcParams['lines.linewidth'] = 6
+## #set font size for titles
+## pylab.rcParams['axes.titlesize'] = 20
+## #set font size for labels on axes
+## pylab.rcParams['axes.labelsize'] = 20
+## #set size of numbers on x-axis
+## pylab.rcParams['xtick.major.size'] = 5
+## #set size of numbers on y-axis
+## pylab.rcParams['ytick.major.size'] = 5
+## #set size of markers
+## pylab.rcParams['lines.markersize'] = 10
 
-```python
+
+###Start code added in Segment 4
+
+
+
 def drunkTestP(numTrials = 50):
     stepsTaken = [10, 100, 1000, 10000]
     meanDistances = []
@@ -135,10 +119,43 @@ def drunkTestP(numTrials = 50):
     pylab.xlabel('Steps Taken')
     pylab.ylabel('Steps from Origin')
     pylab.show()
-```
-还可以假定两种不同的走法，看距离是更远还是更近。
 
-```python
+
+
+
+    
+def drunkTestP1(numTrials = 50):
+    stepsTaken = [10, 100, 1000, 10000]
+    meanDistances = []
+    squareRootOfSteps = []
+    for numSteps in stepsTaken:
+        distances = simWalks(numSteps, numTrials)
+        meanDistances.append(sum(distances)/len(distances))
+        squareRootOfSteps.append(numSteps**0.5)
+    pylab.plot(stepsTaken, meanDistances, 'b-',
+               label = 'Mean distance')
+    pylab.plot(stepsTaken, squareRootOfSteps, 'g-.',
+               label = 'Square root of steps')
+    pylab.title('Mean Distance from Origin')
+    pylab.xlabel('Steps Taken')
+    pylab.ylabel('Steps from Origin')
+    pylab.legend()
+    pylab.show()
+
+
+
+
+
+
+
+#Look at different kinds of drunks
+
+class UsualDrunk(Drunk):
+    def takeStep(self):
+        stepChoices =\
+            [(0.0,1.0), (0.0,-1.0), (1.0, 0.0), (-1.0, 0.0)]
+        return random.choice(stepChoices)
+
 class ColdDrunk(Drunk):
     def takeStep(self):
         stepChoices =\
@@ -154,16 +171,33 @@ class EDrunk(Drunk):
         if random.random() < 0.5:
             deltaY = -deltaY
         return (deltaX, deltaY)
-```
-[Source code](../sources/lectureCode_randomWalks-segment4.py)
 
----
+# New version of simWalks
 
-### Starting with abstract data types makes life easirer.
+def simWalks(numSteps, numTrials, dClass):
+    homer = dClass('Homer')
+    origin = Location(0, 0)
+    distances = []
+    for t in range(numTrials):
+        f = Field()
+        f.addDrunk(homer, origin)
+        distances.append(walk(f, homer, numSteps))
+    return distances
 
-### Subclassing is useful
 
-### Once basic structure in place, we can try different experiments
+def drunkTestP(numTrials = 50):
+    stepsTaken = [10, 100, 1000, 10000]
+    for dClass in (UsualDrunk, ColdDrunk, EDrunk):
+        meanDistances = []
+        for numSteps in stepsTaken:
+            distances = simWalks(numSteps, numTrials, dClass)
+            meanDistances.append(sum(distances)/len(distances))
+        pylab.plot(stepsTaken, meanDistances,
+                   label = dClass.__name__)
+        pylab.title('Mean Distance from Origin')
+        pylab.xlabel('Steps Taken')
+        pylab.ylabel('Steps from Origin')
+        pylab.legend(loc = 'upper left')
+    pylab.show()
 
-### Plotting to get insights into trends.
 
