@@ -79,11 +79,11 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 
 ## Command Palette
 
-⌘ ⇧ p 打开Command Palette
+* ⌘ ⇧ p 打开Command Palette
 
-  可以快速切换syntax highlight
+  * 可以快速切换syntax highlight
 
-记不住的快捷键可以在Command Palette里面快速输入，例如minimap。
+* 记不住的快捷键可以在Command Palette里面快速输入，例如minimap。
 
 ## Goto Anything...
 
@@ -99,39 +99,26 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 
 ## 其它快捷键
 
-按住⌘再按k，再按b可以打开或关闭sidebar
-
-⌘ ⇧ t 打开最后关闭的文件
-
-⌘ + number 跳转到打开的第几个tab 
-
-⌘ ⌥ + 左右arrow，切换tab
-
-⌘ [ ] 做indent
-
-ctrl m 可以在matched bracket之间跳转
-
-⌥ [ : left double quote
-
-⌥ ⇧ [: right double quote
-
-⌥ ]: left single quote
-
-⌥ ⇧ ]: right single quote
+* 按住⌘再按k，再按b可以打开或关闭sidebar
+* ⌘ ⇧ t 打开最后关闭的文件
+* ⌘ + number 跳转到打开的第几个tab 
+* ⌘ ⌥ + 左右arrow，切换tab
+* ⌘ [ ] 做indent
+* ctrl m 可以在matched bracket之间跳转
+* ⌥ [ : left double quote
+* ⌥ ⇧ [: right double quote
+* ⌥ ]: left single quote
+* ⌥ ⇧ ]: right single quote
 
 ## Userful Packages
 
 * [AdvancedNewFile][1]
-
   * ⌘ ⌥ n 快速创建一个new file
-  
 * [SideBarEnhancements][2]
 * [SublimeLinter][3]
 * [MarkdownEditing][4]
 * ReadmePlease 
-  
-  quick open readme.md for all packages you installed
-  
+  * quick open readme.md for all packages you installed
 * LineEndings
 * Git
 * GitGutter
