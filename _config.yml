@@ -9,8 +9,8 @@
 title: Unknown unknowns
 email: nickyfoto@gmail.com
 description: "A personal blog build with Jekyll and github.io"
-baseurl: "/Blog" # the subpath of your site, e.g. /blog
-url: "http://nickyfoto.github.io/Blog" # the base hostname & protocol for your site
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "http://nickyfoto.github.io/blog" # the base hostname & protocol for your site
 twitter_username: macworksio
 github_username:  nickyfoto
 

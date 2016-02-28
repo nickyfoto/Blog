@@ -126,5 +126,5 @@ print factorial(10)	#3628800
 
 先把它们的算法分别定义，取值的时候访问memoize内部定义的memo，如果有，就直接取，如果没有，就计算后存入，并返回计算结果。
 
-[1]: http://nickyfoto.github.io/Blog/entries/6-00-2x-notes-week5-part1
+[1]: http://nickyfoto.github.io/blog/entries/6-00-2x-notes-week5-part1
 [2]: https://en.wikipedia.org/wiki/Fibonacci_number
