@@ -54,7 +54,6 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 * ⌘ d 可以连续选中同样的词；（⌘ k）可以让你跳过当前不想选择的词，继续选下面的；（⌘ u）让你退回上一个选择
 * ⌘ L 选中一行
 * 通过菜单栏Selection/Expand Selection还可以选中一段，默认没有快捷键
-
 * ⌘ ⇧ a 可以选择html tag
 * ^ ⇧ M 可以扩展括号选择，scheme尤其有用
 * ⌘ ⇧ j 按indentation来选中
@@ -133,7 +132,10 @@ ctrl m 可以在matched bracket之间跳转
   
   quick open readme.md for all packages you installed
   
-* LineEnding
+* LineEndings
+* Git
+* GitGutter
+* PlainTasks
 
 [1]:https://github.com/skuroda/Sublime-AdvancedNewFile
 [2]:https://github.com/titoBouzout/SideBarEnhancements
