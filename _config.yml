@@ -8,7 +8,7 @@
 # Site settings
 title: Unknown unknowns
 email: nickyfoto@gmail.com
-description: "A personal blog build with Jekyll and github.io"
+description: "A personal blog build with Jekyll on github.io"
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://nickyfoto.github.io/blog" # the base hostname & protocol for your site
 twitter_username: macworksio
