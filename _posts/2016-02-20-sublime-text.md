@@ -123,6 +123,8 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 * Git
 * GitGutter
 * PlainTasks
+* SelectQuoted
+  * select all within quotes using ⌘ + ' 
 
 [1]:https://github.com/skuroda/Sublime-AdvancedNewFile
 [2]:https://github.com/titoBouzout/SideBarEnhancements
