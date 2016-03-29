@@ -267,7 +267,15 @@ puts add_with_message("The Sum is", 1, 2, 3)
 
 ## lambda
 
+```ruby
+addition = lambda {|a, b| return a + b }
+puts addition.call(5, 6)
+=> 11
+```
+
 A **lambda** is a piece of code that you can store in a variable, and is an object. The simplest explanation for a **block** is that it is a piece of code that **can't** be stored in a variable and **isn't** an object.
+
+### blocks are objects
 
 ```ruby
 empty_block = lambda { }
@@ -313,9 +321,38 @@ mylist.select {|x| x.even?}.map {|x| x + 1} # [3, 5]
   (filter even? mylist)) ;'(3 5)
 ```
 
-### &block或lambda作为method参数
+### lambda作为method参数
 
 ```ruby
+def calculation(a, b, operation)
+  operation.call(a, b)
+end
+
+puts calculation(5, 6, lambda { |a, b| a + b }) # addition
+puts calculation(5, 6, lambda { |a, b| a - b }) # subtraction
+
+def filter(array, block)
+ return array.select &block
+end
+
+p filter([1, 2, 3], lambda {|n| n.odd? } )
+=> [1, 3]
+```
+
+### lambda里面再嵌套lambda
+
+```ruby
+Filter = lambda do |array, &block|
+ array.select(&block)
+end
+
+p Filter.call [1,2,3]  {|n| n.odd?}
+```
+
+### &block的用法
+
+```ruby
+
 def meth_captures(arg, &block)
     block.call(arg, 0) + block.call(arg.reverse, 1)
 end
@@ -350,7 +387,7 @@ puts l.call("try") # Feel free to experiment with this
 # There's no such thing
 ```
 
-### yield
+### yield用法
 
 ```ruby
 def demonstrate_block number
@@ -385,6 +422,19 @@ n = RandomSequence.new(10, 4)
 
 n.each { |x| puts x }
 # 每次产生4个小于10的随机数字
+```
+
+yield也能处理explicit传递的参数
+
+```ruby
+>> def calculate a, b
+>>   yield a, b
+>> end
+=> :calculate
+?> addition = lambda {|x, y| x + y}
+=> #<Proc:0x007fb852089410@(irb):13 (lambda)>
+?> calculate(2, 3, &addition)
+=> 5
 ```
 
 Ruby optimizes for this use case by offering the yield keyword that can call a single lambda that has been implicitly passed to a method without using the parameter list.
@@ -433,4 +483,35 @@ def exec_time(proc)
   proc.call
   Time.now - begin_time
 end
+```
+
+### Lambda vs. Proc
+
+```ruby
+puts lambda {}
+puts Proc.new {}
+#<Proc:0x007fdbf9143228@/Users/Macworks/Downloads/test/test.rb:1 (lambda)>
+#<Proc:0x007fdbf9143110@/Users/Macworks/Downloads/test/test.rb:2>
+```
+
+lambda创建的block在被call之后，method里余下的命令还能继续执行。
+
+```ruby
+def a_method
+ lambda { return "we just returned from the block" }.call
+ return "we just returned from the calling method"
+end
+
+puts a_method
+```
+
+Proc.new创建的block被call之后，直接返回后跳出这个method，method余下命令不会执行。
+
+```ruby
+def a_method
+ Proc.new { return "we just returned from the block" }.call
+ return "we just returned from the calling method"
+end
+
+puts a_method
 ```
