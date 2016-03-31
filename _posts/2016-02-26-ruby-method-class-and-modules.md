@@ -559,7 +559,9 @@ puts p.full_name # John Smith
 puts p.address   # New York
 ```
 
-如果module里面有`included` method，当这个module被引入到其它class时，它会被executed，例如：
+#### included callback
+
+如果module里面有`included` method，当这个module被引入到其它class时，它会被executed。可以用来查看哪个class引入了这个module。例如：
 
 ```ruby
 module Foo
@@ -574,6 +576,8 @@ end
 
 # Foo has been included in class Bar
 ```
+
+但是使用`include`引入module，只能用于class的instance的method，不能作为class本身的method。如果使用`self.extend`，则class本身可以调用这个method。如果instance需要调用，则需要instance先extend这个module，这样class和instance可以同时使用这个method。
 
 However, include has a limitation: it can only add instance level methods - not class level methods. Lets look at an example:
 
@@ -609,11 +613,35 @@ end
 # instance level
 bar=Bar.new
 bar.extend Foo
-bar.module_method
+bar.module_method # Module Method invoked
 
 # class level
-Bar.module_method
+Bar.module_method # Module Method invoked
 ```
+
+当然，你也可以在initialize的时候extend这个module，这样每个instance都可以调用这个method。虽然这可以模拟include，但是include能解决问题的时候就用include，这是ruby默认的方式。
+
+```ruby
+class Bar
+  # include Foo
+  self.extend Foo
+
+  def initialize
+    self.extend Foo
+  end
+end
+```
+
+当然，还可以都用
+
+```ruby
+class Bar
+  include Foo
+  self.extend Foo
+end
+```
+
+与included一样，extended也有一个callback来看谁extend了这个module
 
 更多例子
 
