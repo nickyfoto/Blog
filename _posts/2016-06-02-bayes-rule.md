@@ -74,15 +74,15 @@ P(Sara) = 0.5
 
 如果一封邮件的内容是 "Life deal"， 这封邮件是Chris的的概率是：
 
-P(Chris | email is "life deal") = 0.1 * 0.8 * 0.5 = 0.04
+P(Chris \| email is "life deal") = 0.1 * 0.8 * 0.5 = 0.04
 
 是Sara的概率是：
 
 0.3 * 0.2 * 0.5 = 0.03
 
-P(Chris|"Life deal") = 0.04/(0.03+0.04) = 0.57
+P(Chris \| "Life deal") = 0.04/(0.03+0.04) = 0.57
 
-P(Sara|"Life deal") = 0.03/(0.03+0.04) = 0.43
+P(Sara \| "Life deal") = 0.03/(0.03+0.04) = 0.43
 
 如果邮件内容是"life life deal"，是Chris的概率就变成了
 
