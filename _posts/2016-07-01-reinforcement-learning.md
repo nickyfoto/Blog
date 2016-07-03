@@ -25,7 +25,7 @@ state: s 坐标(1, 1), (4, 4)
 
 model 又称作 transition model或transition function，它包含3个变量。
 
-T(s, a, s') (state, action, another state), 前后两个state可能相同。what the function produces is Pr(s' | s, a)
+T(s, a, s') (state, action, another state), 前后两个state可能相同。what the function produces is Pr(s' \| s, a)
 
 actions: things you can do in a particular state
 
