@@ -11,7 +11,7 @@ comments: true
 
 有一种癌症在人群中的发病率是1%。
 
-P(C) = 0.01
+Pr(C) = 0.01
 
 对这个癌症的检测：
 
@@ -33,16 +33,16 @@ Bayes Rule 总的来说就是 incorporate some evidence from a test into your pr
 用Cancer的例子来说
 
 ```
-prior:  	P(C) = 0.01     = 1%
-        	P(Pos|C) = 0.9  = 90%
-        	P(ℸC) = 0.99
-        	P(Neg|ℸC) = 0.9
-        	P(Pos|ℸC) = 0.1
-joint:      P(C, Pos) = P(C) • P(Pos|C) = 0.01*0.9 = 0.009
-            P(ℸC, Pos) = P(ℸC)• P(Pos|ℸC) = 0.99 * 0.1 = 0.099
-Normalize:  P(Pos) = P(C, Pos) + P(ℸC, Pos) = 0.009 + 0.099 = 0.108
-posterior:  P(C|Pos) = P(C, Pos)/P(Pos) = 0.009/0.108 = 0.0833
-            P(ℸC|Pos) = P(ℸC, Pos)/P(Pos) = 0.099/0.108 = 0.9167
+prior:  	Pr(C) = 0.01     = 1%
+        	Pr(Pos|C) = 0.9  = 90%
+        	Pr(ℸC) = 0.99
+        	Pr(Neg|ℸC) = 0.9
+        	Pr(Pos|ℸC) = 0.1
+joint:      Pr(C, Pos) = Pr(C) • Pr(Pos|C) = 0.01*0.9 = 0.009
+            Pr(ℸC, Pos) = Pr(ℸC)• Pr(Pos|ℸC) = 0.99 * 0.1 = 0.099
+Normalize:  Pr(Pos) = Pr(C, Pos) + Pr(ℸC, Pos) = 0.009 + 0.099 = 0.108
+posterior:  Pr(C|Pos) = Pr(C, Pos)/Pr(Pos) = 0.009/0.108 = 0.0833
+            Pr(ℸC|Pos) = Pr(ℸC, Pos)/Pr(Pos) = 0.099/0.108 = 0.9167
 ```
 
 1000个人，其中10个人有C，其中9人（C ＋ Pos），1人（C ＋ Neg）
@@ -61,28 +61,28 @@ posterior:  P(C|Pos) = P(C, Pos)/P(Pos) = 0.009/0.108 = 0.0833
 Chris邮件中，Love 10%，Deal 80%，Life 10%。
 
 ```
-P(Love | Chris) = 0.1
-P(Deal | Chris) = 0.8
-P(Life | Chris) = 0.1
+Pr(Love | Chris) = 0.1
+Pr(Deal | Chris) = 0.8
+Pr(Life | Chris) = 0.1
 ```
 
 Sara邮件中，Love 50%，Deal 20%，Life 30%。
 
-P(Chris) = 0.5
+Pr(Chris) = 0.5
 
-P(Sara) = 0.5
+Pr(Sara) = 0.5
 
 如果一封邮件的内容是 "Life deal"， 这封邮件是Chris的的概率是：
 
-P(Chris \| email is "life deal") = 0.1 * 0.8 * 0.5 = 0.04
+Pr(Chris \| email is "life deal") = 0.1 * 0.8 * 0.5 = 0.04
 
 是Sara的概率是：
 
 0.3 * 0.2 * 0.5 = 0.03
 
-P(Chris \| "Life deal") = 0.04/(0.03+0.04) = 0.57
+Pr(Chris \| "Life deal") = 0.04/(0.03+0.04) = 0.57
 
-P(Sara \| "Life deal") = 0.03/(0.03+0.04) = 0.43
+Pr(Sara \| "Life deal") = 0.03/(0.03+0.04) = 0.43
 
 如果邮件内容是"life life deal"，是Chris的概率就变成了
 
