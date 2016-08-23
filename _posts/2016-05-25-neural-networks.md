@@ -145,4 +145,50 @@ print c.update(np.array([[2, -2, 4], [-1, -3, 2], [0, 2, 1]]), np.array([0, 1, 0
 # [ 2.7 -0.3  1.7]
 ```
 
+还可以组成一个XOR 网络
+
+```py
+import numpy as np
+
+class Perceptron:
+
+    def evaluate(self,values):
+        
+        strength = np.dot(values,self.weights)
+        if strength >= self.threshold:
+            result = 1
+        else:
+            result = 0
+
+        return result
+
+    def __init__(self,weights=None,threshold=None):
+        if weights is not None:
+            self.weights = weights
+        if threshold is not None:
+            self.threshold = threshold
+            
+
+AND = Perceptron([0.5, 0.5], 0.75)
+OR = Perceptron([2, 2], 0.5)
+SUB = Perceptron([1, -1], 0.5)
+
+Network = [[OR, AND], SUB]
+
+def EvalNetwork(inputValues, Network):
+    # print inputValues
+    i = 0
+    while i < len(Network) - 1:
+        t1 = Network[i][0].evaluate(inputValues)
+        t2 = Network[i][1].evaluate(inputValues)
+        i += 1
+        OutputValues = Network[i].evaluate([t1, t2])
+    return OutputValues
+
+print EvalNetwork(np.array([0, 0]), Network)
+print EvalNetwork(np.array([0, 1]), Network)
+print EvalNetwork(np.array([1, 0]), Network)
+print EvalNetwork(np.array([1, 1]), Network)
+```
+
 [1]: https://en.wikipedia.org/wiki/Half-space_(geometry)
