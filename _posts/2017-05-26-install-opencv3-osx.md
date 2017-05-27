@@ -3,7 +3,7 @@ layout: post
 title:  "在macOS Sierra上安装 OpenCV 3"
 date:   2017-05-26
 author: "Huang Qiang"
-tags: [opencv]
+tags: [opencv, macOS]
 comments: true
 ---
 
