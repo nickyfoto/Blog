@@ -7,9 +7,9 @@ tags: [opencv]
 comments: true
 ---
 
-[OpenCV](http://opencv.org/) 是计算机视觉处理任务中的常用库，也因为复杂度高，对它的安装也不是那么一蹴而就。今天重新把它给本机Python2，Python3重新安装了一些，特此做个记录。
+[OpenCV](http://opencv.org/) 是计算机视觉处理任务中的常用库，也因为复杂度高，对它的安装也不是那么一蹴而就。今天重新把它给本机Python2，Python3重新安装了一下，特此做个记录。
 
-（这里不涉及虚拟环境配置部分，需要的话可以看原文）
+（这里不涉及虚拟环境配置部分，需要的话可以看原文。）
 
 操作环境:
 
@@ -18,20 +18,20 @@ comments: true
 - Python 3.6.1
 - cv2 version 3.2.0
 
-首先你需要安装 [Homebrew](http://brew.sh/)，这个不用说了。完成之后用它来安装两个python：
+首先你需要安装 [Homebrew](http://brew.sh/)，这个不用说了。完成之后用它来安装两个版本的python（这个分裂真是！当初python3出来，就应该尽快把python2干掉，就没那么多后遗症了）：
 
 ```sh
 $ brew install python python3
 ```
 
-这里再次强调一下，mac系统自带的python不是用来给你做开发的。其它常用的工具，ruby，git等，都用brew装一遍。安装完成之后link一下：
+这里再次强调一下，mac系统自带的python不是用来给你做开发的。其它常用的工具，ruby，git等，都用brew装一遍。安装完成之后需要link一下：
 
 ```sh
 $ brew linkapps python
 $ brew linkapps python3
 ```
 
-查看是否是brew版本的两个python：
+查看环境时候会调用 brew 版本的两个 python：
 
 ```sh
 $ which python
@@ -46,7 +46,7 @@ $ which python3
 source ~/.bash_profile
 ```
 
-查看brew安装的两个python的版本号：
+然后查看brew安装的两个python的版本号：
 
 ```sh
 $ python --version
@@ -55,27 +55,25 @@ $ python3 --version
 Python 3.6.1
 ```
 
-brew不能一键安装OpenCV，你需要加一个tap
+brew不能一键安装OpenCV（用的人少？？？），你需要加一个tap：
 
 ```
 brew tap homebrew/science
 ```
 
-下面是复杂的地方，你以为配置完这个tap就可以搞定了。但是如果你直接安，可能会报错：
+下面是复杂的地方，你以为配置完这个tap就可以搞定了。但是如果你直接装，可能会报错：
 
 ```
 opencv3: Does not support building both Python 2 and 3 wrappers
 ```
 
-解决办法有两个，我只写作者推荐的那个
-
-原因是现有版本做了不必要的check。所以你需要编辑一下配置文件：
+解决办法有两个，我只写作者推荐的那个。报错原因是现有版本做了不必要的check。所以你需要编辑一下配置文件：
 
 ```
 brew edit opencv3
 ```
 
-如果你没设置Homebrew编辑器，默认会用vim打开
+如果你没设置Homebrew编辑器，默认会用vim打开（论vim的重要性！）
 
 你需要在第187行找到这几行字。把它们用 `#` 号comment掉。
 
@@ -86,12 +84,12 @@ if build.with?("python3") && build.with?("python")
 end
 ```
 
-修改前：
+修改前（盗图）：
 
 
 ![](http://www.pyimagesearch.com/wp-content/uploads/2017/05/resolving_homebrew_error_brew_edit_02.jpg)
 
-修改后：
+修改后（还是盗图）：
 
 ![](http://www.pyimagesearch.com/wp-content/uploads/2017/05/resolving_homebrew_error_brew_edit_01.jpg)
 
@@ -112,7 +110,7 @@ $ echo /usr/local/opt/opencv3/lib/python2.7/site-packages >> /usr/local/lib/pyth
 这还没完，你会发现cv2在python3的路径下有一个搞笑的名字叫`cv2.cpython-36m-darwin.so`。
 
 ```
-$ ls -l /usr/local/opt/opencv3/lib/python3.5/site-packages/
+$ ls -l /usr/local/opt/opencv3/lib/python3.6/site-packages/
 total 6952
 -r--r--r--  1 admin  admin  3556384 Dec 15 09:28 cv2.cpython-36m-darwin.so
 ```
@@ -131,7 +129,7 @@ $ cd ~
 $ echo /usr/local/opt/opencv3/lib/python3.6/site-packages >> /usr/local/lib/python3.6/site-packages/opencv3.pth
 ```
 
-验证：
+安装完成进行验证：
 
 ```
 $ python
@@ -153,7 +151,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 '3.2.0'
 ```
 
-至此大功告成，可以玩耍了。详情还是可以仔细参考下面这两篇文章，讲的很好：
+至此大功告成，可以玩耍了。其它问题可以仔细参考下面这两篇文章，讲的很好：
 
 [Install OpenCV 3 on macOS with Homebrew (the easy way)](http://www.pyimagesearch.com/2016/12/19/install-opencv-3-on-macos-with-homebrew-the-easy-way/)
 
