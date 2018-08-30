@@ -29,3 +29,9 @@ The above relation is not transitive, in order to make it transitive, we should 
 ```
 
 This also contains the original relation as a subset. This forms a transitive closure.
+
+Formal definition:
+
+Given a relation $$r$$, on a set $$A$$, the transitive closure of $$r$$ is the smallest transitive relation that contains $$r$$ as a subset. Often denoted by $$r*$$.
+
+https://www.youtube.com/watch?v=OO8Jfs9uZnc
