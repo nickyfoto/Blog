@@ -27,6 +27,7 @@ $$A \times A$$ | ✅ | ❎ | ✅ | ❎ | ❎ | ✅
 {(1,2),(1,3)} | ❎ | ✅ | ❎ | ✅ | ✅ | ✅
 {(2, 3)} | ❎ | ✅ | ❎ | ✅ | ✅ | ✅
 {(1,2),(2,1)} | ❎ | ✅ | ✅ | ❎ | ❎ | ❎
+
 reflexive: all diagonal element must be present
 
 irreflexive: non diagonal element can present
