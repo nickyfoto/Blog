@@ -34,4 +34,8 @@ Formal definition:
 
 Given a relation $$r$$, on a set $$A$$, the transitive closure of $$r$$ is the smallest transitive relation that contains $$r$$ as a subset. Often denoted by $$r*$$.
 
+A Theorem how to compute transitive relation is that:
+
+Let $$r$$ be a relation on $$A$$ and let $$r*$$ be the transitive closure, Then $$(a,b) \in r*$$ if and only if 
+
 https://www.youtube.com/watch?v=OO8Jfs9uZnc
