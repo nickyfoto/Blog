@@ -13,7 +13,7 @@ A partial order is defined as a relation which is
 - Reflexive
 - Transitive
 
-e.g. $$A = \{1, 2, 3, 4\}$$, where $$xRy$$ if $$x {|} y$$
+e.g. $$A = \{1, 2, 3, 4\}$$, where $$xRy$$ if $$x$$ divides $$y$$
 
 $$R = \{(1,1),(1,2),(1,3),(1,4),(2,2),(2,4),(3,3),(4,4)\}$$
 
