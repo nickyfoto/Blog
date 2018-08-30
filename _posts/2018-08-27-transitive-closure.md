@@ -36,6 +36,6 @@ Given a relation $$r$$, on a set $$A$$, the transitive closure of $$r$$ is the s
 
 A Theorem how to compute transitive relation is that:
 
-Let $$r$$ be a relation on $$A$$ and let $$r*$$ be the transitive closure, Then $$(a,b) \in r*$$ if and only if 
+Let $$r$$ be a relation on $$A$$ and let $$r*$$ be the transitive closure, Then $$(a,b) \in r*$$ if and only if there's a path from $$a$$ to $$b$$. (length of the path is not specified).
 
 https://www.youtube.com/watch?v=OO8Jfs9uZnc
