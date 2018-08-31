@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Partial order | Total order"
+title:  "Partial order | Total order | Covering relation"
 date:   2018-08-26
 author: "Huang Qiang"
 tags: [discrete math]
