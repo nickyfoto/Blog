@@ -131,3 +131,20 @@ Poset | Subset | LB  | UP  | GLB | LUP
 A     | S1     | {1,2,3,6}  | {12, 24, 36} | 6 | 12
 A     | S2     | {1} | {6,12,24,36} | 1 | 6
 A     | S3     | {1,2,3,6} | $$\emptyset$$ | 6 | -
+
+Example: 
+
+```
+  e
+ / \
+d   |
+|   |
+b   c
+ \ /
+  a
+```
+
+Poset | Subset | LB  | UP  | GLB | LUP
+----- | ------ | --- | --- | --- | ---
+ex    | {d,c}  | {a} | {e} | a   | e
+
