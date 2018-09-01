@@ -49,11 +49,10 @@ If R = {(1,1),(2,2),(3,3),(4,4),(3,4),(4,3)}, then Hasse diagram would be:
 ```
 ⟲ | ⟲ | ⟲   ⟲
 ① | ② | ③ ⇄ ④
-Partition = {{1},{2}, {3,4}}
 ```
 
-
+Partition = $$\{\{1\},\{2\}, \{3,4\}\}$$
 
 Partition can also be transformed to equivalence relation e.g.
 
-P = {{1,2}, {3}, {4}} can be mapped to R = {(1,1),(1,2),(2,1),(2,2),(3,3),(4,4))}
+$$P = \{\{1,2\}, \{3\}, \{4\}\}$$ can be mapped to R = {(1,1),(1,2),(2,1),(2,2),(3,3),(4,4))}
