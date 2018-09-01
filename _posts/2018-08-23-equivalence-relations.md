@@ -42,7 +42,7 @@ R is an equivalence relation because
 ③ ⇄ ④
 ⟲   ⟲
 ```
-Partition = {{1,2}, {3,4}}
+Partition = $$\{\{1,2\}, \{3,4\}\}$$
 
 If R = {(1,1),(2,2),(3,3),(4,4),(3,4),(4,3)}, then Hasse diagram would be:
 
