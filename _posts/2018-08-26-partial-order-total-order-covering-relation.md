@@ -11,8 +11,8 @@ comments: true
 
 A _partial order_ on a set $$A$$ is a relation that is
 
-- Antisymmetric
 - Reflexive
+- Antisymmetric
 - Transitive
 
 A set $$A$$ together with a partial order $$\preceq$$ on $$A$$ is called a _partially ordered set_ (or simply _poset_) and is denoted as $$(A;\preceq)$$.
