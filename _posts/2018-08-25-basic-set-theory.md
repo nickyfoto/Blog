@@ -19,7 +19,7 @@ P = {{a, b}, c, d}
 
 $$\{a, b\} \not\subseteq P$$
 
-$$\{\{{a, b\}}\} \subseteq P$$
+{{a, b}} $$\subseteq P$$
 
 $$\{a, b\} \in P$$
 
