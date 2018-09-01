@@ -9,19 +9,25 @@ comments: true
 
 ### Partial Order
 
-A partial order is defined as a relation which is
+A _partial order_ on a set $$A$$ is a relation that is
 
 - Antisymmetric
 - Reflexive
 - Transitive
 
-e.g. $$A = \{1, 2, 3, 4\}$$, where $$xRy$$ if $$x$$ divides $$y$$
+A set $$A$$ together with a partial order $$\preceq$$ on $$A$$ is called a _partially ordered set_ (or simply _poset_) and is denoted as $$(A;\preceq)$$.
+
+e.g. $$A = \{1, 2, 3, 4\}$$, where $$x\ R\ y$$ if $$x$$ divides $$y$$
 
 $$R = \{(1,1),(1,2),(1,3),(1,4),(2,2),(2,4),(3,3),(4,4)\}$$
 
 Diagram can be draw as:
 
 ![](../images/partial_order.png)
+
+### Comparable
+
+For a poset $$(A;\preceq)$$, two elements $$a$$ and $$b$$ are called _comparable_ if $$a \preceq b$$ or $$ b \preceq a$$, otherwise they are called _incomparable_.
 
 ### Total order
 
@@ -33,9 +39,15 @@ If any two elements of a poset $$(A; \preceq)$$ are comparable, then A is called
  
 ![](../images/total_order_pre_hasse.png)
 
-![](../images/total_order_hasse.png)
+### Cover
 
-### Covering relation
+In a poset $$(A;\preceq)$$ an element $$b$$ is said to _cover_ an element a if $$a \prec b$$ and there exists no $$c$$ with $$a \prec c$$ and $$c \prec b$$ (i.e. between $$a$$ and $$b$$).
+
+### Hasse Diagram
+
+The _Hass Diagram_ of a (finite) poset $$(A;\preceq)$$ is the directed graph whose vertices are labeled with elements of $$A$$ and where there is an edge from $$a$$ to $$b$$ if and only if $$b$$ covers $$a$$.
+
+![](../images/total_order_hasse.png)
 
 if $$A = \{1,2,3,4,5,6,7,8\}$$, the Hasse diagram is:
 
