@@ -15,11 +15,11 @@ $$a \not\subseteq N$$
 
 $$a \in N$$
 
-P = {{a, b}, c, d}
+$$P = \{\{a, b\}, c, d\}$$
 
 $$\{a, b\} \not\subseteq P$$
 
-{{a, b}} $$\subseteq P$$
+$$\{\{a, b\}\} \subseteq P$$
 
 $$\{a, b\} \in P$$
 
