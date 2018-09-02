@@ -7,7 +7,7 @@ tags: [discrete math]
 comments: true
 ---
 
-### Least Greatest Minimal Maximal Element
+### Least, Greatest, Minimal, Maximal, Element
 
 Let $$(A;\preceq)$$ be a poset. let $$S \subseteq A$$ be some subset of $$A$$.
 
