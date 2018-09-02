@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Partial order | Totally ordered | Well-ordered | Covering relation"
+title:  "Order and Covering relation"
 date:   2018-08-26
 author: "Huang Qiang"
 tags: [discrete math]
