@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Partial order | Total order | Covering relation"
+title:  "Partial order | Totally ordered | Well-ordered | Covering relation"
 date:   2018-08-26
 author: "Huang Qiang"
 tags: [discrete math]
@@ -29,7 +29,7 @@ Diagram can be draw as:
 
 For a poset $$(A;\preceq)$$, two elements $$a$$ and $$b$$ are called _comparable_ if $$a \preceq b$$ or $$ b \preceq a$$, otherwise they are called _incomparable_.
 
-### Total order
+### Totally ordered
 
 if $$A = \{1, 2, 4, 8\}$$, using the same relation
 
@@ -38,6 +38,10 @@ $$R = \{(1,1),(1,2),(1,4),(1,8),(2,2),(2,4),(2,8),(4,4),(4,8),(8,8)\}$$
 If any two elements of a poset $$(A; \preceq)$$ are comparable, then A is called _totally ordered_ (or linearly ordered) by $$\preceq$$.
  
 ![](../images/total_order_pre_hasse.png)
+
+### Well ordered
+
+Definition: A poset $$(A;\preceq)$$ is _well-ordered_ if it is totally ordered and if every non-empty subset of A has a [least element](https://nickyfoto.github.io/blog/entries/special-elements-in-posets).
 
 ### Cover
 
