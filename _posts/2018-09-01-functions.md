@@ -20,9 +20,11 @@ $$n(f) = y \times y \times y... \times y=y^x$$
 
 ![](../images/types_of_functions.png)
 
-### Injective
+### Injective (one-to-one)
 
 If $$x_1 \not= x_2$$, then $$f(x_1) \not=f(x_2)$$,i.e., not two distinct values are mapped to the same function value (there are no "collisions").
+
+**Example**: Let $$f: \mathbb{Z} \rightarrow \mathbb{Q}$$ be defined by $$f(n)=n/1$$. Then $$f$$ is one-to-one but not onto.
 
 How many injective functions are possible from a set of $$x$$ elements to set of $$y$$ elements?
 
@@ -36,6 +38,8 @@ Let $$f: X \rightarrow Y$$
 
 $$f$$ is surjective iff $$\forall y \in Y, \exists x \in X$$ such that $$f(x) = y$$ (every value in the codomain is taken on for some argument).
 
-### Bijective (one-to-one)
+**Example**: Define $$g: \mathbb{Q} \rightarrow \mathbb{Z}$$ by $$g(p/q)=p$$ where $$p/q$$ is a rational number expressed in its lowest terms with a positive denominator. The function $$g$$ is onto but not one-to-one.
+
+### Bijective (one-to-one and onto)
 
 If it is both injective and surjective.
