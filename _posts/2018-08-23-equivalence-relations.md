@@ -11,9 +11,9 @@ comments: true
 
 A _equivalence relation_ is a relation on a set $$A$$ that is
 
-- Reflexive
-- Symmetric
-- Transitive
+- $$(x,x) \in R$$ for all $$x \in X$$ (Reflexive)
+- $$(x,y) \in R$$ implies $$(y,x) in R$$ (Symmetric)
+- $$(x,y)\ \text{and} (y,z) \in R$$ imply $$(x,y) \in R$$ (Transitive)
 
 S = {1,2,3,4}
 
