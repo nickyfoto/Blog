@@ -9,10 +9,10 @@ comments: true
 
 ### Definition
 
-A _equivalence relation_ is a relation on a set $$A$$ that is
+A _equivalence relation_ is a relation on a set $$X$$ that is
 
 - $$(x,x) \in R$$ for all $$x \in X$$ (Reflexive)
-- $$(x,y) \in R$$ implies $$(y,x) in R$$ (Symmetric)
+- $$(x,y) \in R$$ implies $$(y,x) \in R$$ (Symmetric)
 - $$(x,y)\ \text{and} (y,z) \in R$$ imply $$(x,y) \in R$$ (Transitive)
 
 S = {1,2,3,4}
@@ -42,6 +42,8 @@ R is an equivalence relation because
 ③ ⇄ ④
 ⟲   ⟲
 ```
+A **partition** $$\mathcal{P}$$ of a set $$X$$ is a collection of nonemtpy set $$X_1,X_2,\ldots$$ such that $$X_i \cap X_j = \emptyset$$ for $$i \not= j$$ and $$\bigcup_k X_k = X$$. Let $$\sim$$ be an equivalence relation on a set $$X$$ and let $$x \in X$$. Then $$[x] = \{y \in X: y \sim x\}$$ is called the **equivalence class** of $$x$$.
+
 Partition = $$\{\{1,2\}, \{3,4\}\}$$
 
 If R = {(1,1),(2,2),(3,3),(4,4),(3,4),(4,3)}, then Hasse diagram would be:

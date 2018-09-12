@@ -43,3 +43,10 @@ $$f$$ is surjective iff $$\forall y \in Y, \exists x \in X$$ such that $$f(x) = 
 ### Bijective (one-to-one and onto)
 
 If it is both injective and surjective.
+
+Let $$f: A \rightarrow B, g: B \rightarrow C,\ \text{and} h: C \rightarrow D$$. Then
+
+1. The composition of mapping is associative: that is, $$(h \circ g) \circ f = h \circ (g \circ f)$$;
+2. If $$f$$ and $$g$$ are both one-to-one, then the mapping $$g \circ f$$ is one-to-one;
+3. If $$f$$ and $$g$$ are both onto, then the mapping $$g \circ f$$ is onto;
+4. If $$f$$ and $$g$$ are bijective, then so is $$g \circ f$$.
