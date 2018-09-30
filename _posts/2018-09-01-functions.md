@@ -7,7 +7,13 @@ tags: [discrete math, set theory]
 comments: true
 ---
 
-Definition: A _function_ $$f\ A \rightarrow B$$ from a _domain_ $$A$$ to a _codomain_ $$B$$ is a relation from $$A$$ to $$B$$ with the special properties (using the relation notation $$a\ f\ b$$:
+Definition1: A _function_ $$f: A \rightarrow B$$ from a _domain_ $$A$$ to a _codomain_ $$B$$ is a set of pairs $$(x,y): x \in A, y \in B$$, each $$x \in A$$ appears in exactly one pair. e.g.
+
+$$\{(x,x^2) \in \mathbb{R}^2 \mid x \in \mathbb{R}\}$$
+
+is a formal description of the square function.
+
+Definition2: A _function_ $$f: A \rightarrow B$$ from a _domain_ $$A$$ to a _codomain_ $$B$$ is a relation from $$A$$ to $$B$$ with the special properties (using the relation notation $$a\ f\ b$$):
 
 1. $$\forall a \in A\ \exists b \in B\ a\ f\ b$$ ($$f$$ is totally defined)
 2. $$\forall a \in A\ \forall b, b' \in B (a\ f\ b \wedge a\ f\ b' \rightarrow b = b')$$ ($$f$$ is well defined)
