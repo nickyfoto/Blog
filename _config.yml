@@ -17,7 +17,7 @@ github_username:  nickyfoto
 # Build settings
 markdown: kramdown
 kramdown:
-    auto_ids: false
+    auto_ids: true
     input: GFM
     hard_wrap: false
 permalink: /entries/:title
