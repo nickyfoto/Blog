@@ -38,20 +38,20 @@ $$
 A \vec{v} = \lambda \vec{v}
 $$
 
-$A$ is a matrix representing some transformation, $\vec{v}$ is eigenvector, $\lambda$ is the eigenvalue, $\vec{v} \not=0$. <u>What this expression is saying is that the matrix-vector product gives the same result as just scaling the eigenvector $\vec{v}$ by some scalar $\lambda$.</u> Finding the $\lambda$ and $\vec{v}$ of matrix A is to find the values that make this expression true.
+$$A$$ is a matrix representing some transformation, $$\vec{v}$$ is eigenvector, $$\lambda$$ is the eigenvalue, $$\vec{v} \not=0$$. What this expression is saying is that the matrix-vector product gives the same result as just scaling the eigenvector $$\vec{v}$$ by some scalar $$\lambda$$. Finding the $$\lambda$$ and $$\vec{v}$$ of matrix A is to find the values that make this expression true.
 
 
 It's a little awkward to work with at first, because that left hand side represents matrix-vector multiplication, but the right hand side here is scalar-vector multiplication. So let's start by rewriting that right hand side as some kind of matrix-vector multiplication, using a matrix, which has the effect of scaling any vector by a factor of $\lambda$. This is $\lambda I$, where $I$ is the identity matrix.
 
-Because $A\vec{v} - \lambda I \vec{v} = 0$, $\lambda \vec{v}$ can also be written as $\lambda I \vec{v}$, therefore we have
+Because $$A\vec{v} - \lambda I \vec{v} = 0$$, $$\lambda \vec{v}$$ can also be written as $$\lambda I \vec{v}$$, therefore we have
 
 $$
 (A - \lambda I) \vec{v} = 0
 $$
 
-Since $\vec{v} \not= 0$, the only way to satisfy the equation above is when $det(A - \lambda I) = 0$. It means we add or subtract a value from the diagonal of A such that the altered matrix A has its determinant equals to 0.
+Since $$\vec{v} \not= 0$$, the only way to satisfy the equation above is when $$det(A - \lambda I) = 0$$. It means we add or subtract a value from the diagonal of A such that the altered matrix A has its determinant equals to 0.
 
-After finding $\lambda$ we could find the vector $\vec{v}$ such that after applied the linear transformation by matrix A, $\vec{v}$ still remains on its own span.
+After finding $$\lambda$$ we could find the vector $$\vec{v}$$ such that after applied the linear transformation by matrix A, $$\vec{v}$$ still remains on its own span.
 
 For example, for matrix 
 
@@ -60,14 +60,14 @@ $$\begin{bmatrix}
 0 & 2 
 \end{bmatrix}$$
 
-What $\lambda$ we subtract from its diagonal makes the determinant of it become zero? 
+What $$\lambda$$ we subtract from its diagonal makes the determinant of it become zero? 
 
 $$det\bigg(\begin{bmatrix} 
 3 - \lambda & 1 \\
 0 & 2 - \lambda 
 \end{bmatrix}) = (3-\lambda)(2-\lambda) - 1· 0 = 0$$
 
-Solve for $\lambda$ get the possible eigenvalues are $\lambda = 2$ and $\lambda = 3$. Plug the eigenvalue say $\lambda = 2$ to the matrix, get the following equation
+Solve for $$\lambda$$ get the possible eigenvalues are $$\lambda = 2$$ and $$\lambda = 3$$. Plug the eigenvalue say $$\lambda = 2$$ to the matrix, get the following equation
 
 $$\begin{bmatrix} 
 3 - 2 & 1 \\
@@ -97,7 +97,7 @@ $$\begin{bmatrix}
 
 This doesn't have any eigenvectors, since it rotates every vector off of its own span. If you actually try computing the eigenvalues of a rotation like this, you got imaginary numbers as the solution. The fact that there are no real number solutions indicates that there are no eigenvectors.
 
-Another interesting example is shear transformation, meaning fixing $\hat{i}$ and moves $\hat{j}$ one over, like matrix
+Another interesting example is shear transformation, meaning fixing $\hat{i}$ and moves $$\hat{j}$$ one over, like matrix
 
 $$\begin{bmatrix} 
 1 & 1 \\
@@ -113,7 +113,7 @@ $$det\bigg(\begin{bmatrix}
 0 & 1 - \lambda 
 \end{bmatrix}) = (1-\lambda)(1-\lambda) - 1· 0 = 0$$
 
-You got $\lambda=1$.
+You got $$\lambda=1$$.
 
 Keep in mind though, it's also possible to have just one eigenvalue, but with more than just a line full of eigenvectors.
 
@@ -128,7 +128,7 @@ the only eigenvalue is 2, but every vector in the plane gets to be an eigenvecto
 
 ## Eigenbasis
 
-For example, maybe $\hat{i}$ is scaled by -1 and $\hat{j}$ is scaled by 2.
+For example, maybe $$\hat{i}$$ is scaled by -1 and $$\hat{j}$$ is scaled by 2.
 
 Writing their new coordinates as the columns of a matrix
 
@@ -137,7 +137,7 @@ $$\begin{bmatrix}
 0 & 2
 \end{bmatrix}$$
 
-Notice that those scalar multiples -1 and 2, which are the eigenvalues of $\hat{i}$ and  $\hat{j}$, sit on the diagonal of our matrix and every other entry is a 0. For a diagonal matrix, in fact, all the basis vectors are eigenvectors, with the diagonal entries of this matrix being their eigenvalues.
+Notice that those scalar multiples -1 and 2, which are the eigenvalues of $$\hat{i}$$ and  $$\hat{j}$$, sit on the diagonal of our matrix and every other entry is a 0. For a diagonal matrix, in fact, all the basis vectors are eigenvectors, with the diagonal entries of this matrix being their eigenvalues.
 
 Diagonal matrices makes it easier to multiply itself a whole bunch of times.
 
