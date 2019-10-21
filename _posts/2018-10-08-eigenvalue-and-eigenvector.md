@@ -21,7 +21,7 @@ $$\begin{bmatrix}
 
 It moves basis vector (1,0) to (3,0) and (0,1) to (1,2). Focusing what it does on one particular vector, think about the span of that vector. A line passing through its origin and its tip. Most vectors are going to get knocked off their span during the transformation. But some special vectors do remain on their own span. Meaning the effect that the matrix has on such a vector is just to stretch it or squish it.
 
-In the above example, the basis vector (1,0) is such special vector. $\hat i$ moves over to 3 times itself. It also means any other vector on the x-axis is also just stretched by a factor of 3, remains on its own span.
+In the above example, the basis vector (1,0) is such special vector. $$\hat i$$ moves over to 3 times itself. It also means any other vector on the x-axis is also just stretched by a factor of 3, remains on its own span.
 
 A slightly sneakier vector that remains on its own span during this transformation is (-1,1). It ends up getting stretched by a factor of 2. The same happens to any vectors that on this diagonal line. Under this transformation, those are all the vectors with this special property. Any other vector is going to get rotated somewhat during the transformation, knocked off the line that it spans. These special vectors are called **eighenvectors** of this transformation.
 
