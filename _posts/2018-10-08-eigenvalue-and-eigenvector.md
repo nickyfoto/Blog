@@ -190,7 +190,7 @@ $$\bigg(\begin{bmatrix}
 0 & 1
 \end{bmatrix}
 \bigg(\begin{bmatrix} 
-3 & 1 \\
+3 & 0 \\
 0 & 2
 \end{bmatrix}\bigg)^{100}
 \begin{bmatrix} 
