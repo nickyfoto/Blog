@@ -7,10 +7,7 @@ tags: [linear algebra, eigenvalue, eigenvector]
 comments: true
 ---
 
-## Eigenvector and eigenvalues
-
 This is a text version of 3Blue1Brown's [Eigenvectors and eigenvalues](https://www.youtube.com/watch?v=PFDu9oVAE-g)
-
 
 Consider matrix
 
