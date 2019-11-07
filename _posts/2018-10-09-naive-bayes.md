@@ -3,11 +3,11 @@ layout: post
 title:  "Naive Bayes"
 date:   2018-10-09
 author: "Huang Qiang"
-tags: [machine learning]
+tags: [machine learning, naive bayes]
 comments: true
 ---
 
-http://cs229.stanford.edu/notes/cs229-notes2.pdf
+[CS 229 notes2](http://cs229.stanford.edu/notes/cs229-notes2.pdf)
 
 $$\begin{aligned}
 p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x1,x2) \cdots p(x_{50000}|y,x_1,\ldots,x_{49999}) \\
@@ -78,4 +78,8 @@ Maximizing this with respect $$\phi_y, \phi_{j \mid y=1}, \phi_{j \mid y=0}$$ to
 
 $$\phi_{j|y=1} = \frac{\sum_{i=1}^m 1\{x_j^{(i)} = 1 \wedge y^{(i)} = 1\}}{\sum_{i=1}^m1\{y^{(i)} = 1\}}$$
 
-We introduce one more very useful piece of notation. An indicator function $$1\{·\}$$ takes on a value of 1 if its argument is true, and 0 otherwise ($$1\{True\} = 1$$, $$1\{False\} = 0$$). For example, $$1\{2 = 3\} = 0$$, and $$1\{3 = 5 − 2\} = 1$$. So, we can also write the relationship between $$T(y)$$ and y as $$(T(y))i = 1\{y = i\}$$.
+$$\phi_{j|y=0} = \frac{\sum_{i=1}^m 1\{x_j^{(i)} = 1 \wedge y^{(i)} = 0\}}{\sum_{i=1}^m1\{y^{(i)} = 0\}}$$
+
+$$\phi_y = \frac{\sum_{i=1}^m 1\{y^{(i) = 1}\}}{m}$$
+
+"$$\wedge$$" means "and". $$1\{·\}$$ is an indicator function takes on a value of 1 if its argument is true, and 0 otherwise i.e. ($$1\{\text{True}\} = 1$$, $$1\{\text{False}\} = 0$$). For example, $$1\{2 = 3\} = 0$$, and $$1\{3 = 5 − 2\} = 1$$.
