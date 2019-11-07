@@ -1,5 +1,5 @@
 ---
-torlayout: post
+layout: post
 title:  "Eigenvalue and Eigenvector"
 date:   2018-10-08
 author: "Huang Qiang"
