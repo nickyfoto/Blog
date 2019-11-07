@@ -49,8 +49,7 @@ $$P(X | A) = P(X)$$
 
 We say two event are conditionally independent 
 
-$$p(x_{2087}|y) = p(x_{2087}|y, x_{39831})$$, this is to say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
-
+$$p(x_{2087} \mid y) = p(x_{2087} \mid y, x_{39831})$$, this is to say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
 
 Bayes rule tells us we can get 
 
@@ -73,9 +72,9 @@ $$\phi_{j|y=0} = p(x_j = 1|y=0)$$
 
 Joint likelihood of the data:
 
-$$\mathcal{L}(\phi_y, \phi_{j|y=0}, \phi_{j|y=1}) = \prod_{i=1}^m p(x^{(i)},y^{(i)})$$
+$$\mathcal{L}(\phi_y, \phi_{j \mid y=0}, \phi_{j \mid y=1}) = \prod_{i=1}^m p(x^{(i)},y^{(i)})$$
 
-Maximizing this with respect $$\phi_y, \phi_{j|y=1}, \phi_{j|y=0}$$ to gives the MLE (maximum likelihood estimates):
+Maximizing this with respect $$\phi_y, \phi_{j \mid y=1}, \phi_{j \mid y=0}$$ to gives the MLE (maximum likelihood estimates):
 
 $$\phi_{j|y=1} = \frac{\sum_{i=1}^m 1\{x_j^{(i)} = 1 \wedge y^{(i)} = 1\}}{\sum_{i=1}^m1\{y^{(i)} = 1\}}$$
 
