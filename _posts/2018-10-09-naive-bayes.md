@@ -15,7 +15,7 @@ p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x1,x2) \cdots p(x_{50
 &= \prod_{j=1}^n p(x_j|y)
 \end{aligned}$$
 
-The first equal sign is using **multiplication rule**?
+The first equal sign is using **multiplication rule**.
 
 For two r.v we have 
 
@@ -86,6 +86,6 @@ $$\phi_y = \frac{\sum_{i=1}^m 1\{y^{(i) = 1}\}}{m}$$
 
 When we vectorize a text into (multivariate) Bernoulli distribution, we just use the word whether it is present or not.
 
-If the number of times a particular word occurs is important, $x$ becomes a [multinomial distribution](https://newonlinecourses.science.psu.edu/stat504/node/40/).
+If the number of times a particular word occurs is important, $$x$$ becomes a [multinomial distribution](https://newonlinecourses.science.psu.edu/stat504/node/40/).
 
 To see How to implement your own Naive Bayes in python, refer to [here](https://github.com/nickyfoto/learn/blob/master/naive_bayes.ipynb).
