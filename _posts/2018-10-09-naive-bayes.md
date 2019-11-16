@@ -7,11 +7,11 @@ tags: [machine learning, naive bayes]
 comments: true
 ---
 
-This post is based on [CS 229 notes2](http://cs229.stanford.edu/notes/cs229-notes2.pdf).
+Given label $y$
 
 $$\begin{aligned}
-p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x1,x2) \cdots p(x_{50000}|y,x_1,\ldots,x_{49999}) \\
-&= p(x_1|y)p(x_2|y)p(x_3|y) \cdots p(x_50000|y) \\
+p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x_1,x_2) \cdots p(x_{50000}|y,x_1,\ldots,x_{49999}) \\
+&= p(x_1|y)p(x_2|y)p(x_3|y) \cdots p(x_{50000}|y) \\
 &= \prod_{j=1}^n p(x_j|y)
 \end{aligned}$$
 
@@ -89,3 +89,7 @@ When we vectorize a text into (multivariate) Bernoulli distribution, we just use
 If the number of times a particular word occurs is important, $$x$$ becomes a [multinomial distribution](https://newonlinecourses.science.psu.edu/stat504/node/40/).
 
 To see How to implement your own Naive Bayes in python, refer to [here](https://github.com/nickyfoto/learn/blob/master/naive_bayes.ipynb).
+
+### References:
+
+- [CS 229 notes2](http://cs229.stanford.edu/notes/cs229-notes2.pdf)
