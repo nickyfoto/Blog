@@ -7,15 +7,9 @@ tags: [machine learning, naive bayes]
 comments: true
 ---
 
-Given label $y$
+Before we dive into naive bayes, let's review two probability concepts that this algorithm based one.
 
-$$\begin{aligned}
-p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x_1,x_2) \cdots p(x_{50000}|y,x_1,\ldots,x_{49999}) \\
-&= p(x_1|y)p(x_2|y)p(x_3|y) \cdots p(x_{50000}|y) \\
-&= \prod_{j=1}^n p(x_j|y)
-\end{aligned}$$
-
-The first equal sign is using **multiplication rule**.
+### Multiplication rule
 
 For two r.v we have 
 
@@ -32,12 +26,8 @@ $$\begin{aligned}
                     &= p_Y(y)\ p_{Z \mid Y} (z \mid y)\ p_{X \mid Y,Z} (x \mid y, z) \\
                     &= p_Z(z)\ p_{X \mid Z} (x \mid z)\ p_{Y \mid Z,X} (y \mid z, x)
     \end{aligned}$$
-
-The second equal sign is based on **Naive Bayes (NB) assumption**.
-
-Assume $$x_i$$ are **conditionally independent** given $$y$$.
-
-What is conditionally independent?
+    
+### Conditionally independent
 
 We **define** to r.v. are **independent** if for all $$x$$, in PMF notation,
 
@@ -47,9 +37,21 @@ In event notation,
 
 $$P(X | A) = P(X)$$
 
-We say two event are conditionally independent 
+### Naive Bayes
 
-$$p(x_{2087} \mid y) = p(x_{2087} \mid y, x_{39831})$$, this is to say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
+Given label $y$
+
+$$\begin{aligned}
+p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x_1,x_2) \cdots p(x_{50000}|y,x_1,\ldots,x_{49999}) \\
+&= p(x_1|y)p(x_2|y)p(x_3|y) \cdots p(x_{50000}|y) \\
+&= \prod_{j=1}^n p(x_j|y)
+\end{aligned}$$
+
+The first equal sign is using **multiplication rule**.
+
+The second equal sign is based on **Naive Bayes (NB) assumption**.
+
+The assumption says that $$x_i$$ are **conditionally independent** given $$y$$. For example, two event are conditionally independent $$p(x_{2087} \mid y) = p(x_{2087} \mid y, x_{39831})$$, this is to say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
 
 Bayes rule tells us we can get 
 
