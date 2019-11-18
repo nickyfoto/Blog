@@ -7,6 +7,16 @@ tags: [machine learning, linear regression]
 comments: true
 ---
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Least Mean Square](#least-mean-square)
+- [The normal equation](#the-normal-equation)
+- [Evaluation Metrics](#evaluation-metrics)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Least Mean Square
 
 cost function
