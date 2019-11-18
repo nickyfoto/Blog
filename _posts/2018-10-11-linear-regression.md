@@ -7,7 +7,9 @@ tags: [machine learning, linear regression]
 comments: true
 ---
 
-Least Mean Square cost function
+## Least Mean Square
+
+cost function
 
 $$
 J(\theta) = \frac{1}{2} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) ^2
@@ -44,10 +46,23 @@ $$
 \theta_j = \theta_j - \alpha \bigg[ \bigg(\frac{1}{m}\sum_{i+1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \bigg) + \frac{\lambda}{m}\theta_j \bigg]
 $$
 
-Evaluation Metrics
+## The normal equation
+
+We can minimize $J$ by explicitly taking its derivatives with respect to the $\theta_j$'s, and setting them to zero.
+
+$$\theta = (X^T X)^{-1} X^T y$$
+
+When implementing the normal equation we want to use the `pinv` function rather than `inv` The `pinv` function will give you a value of $\theta$ even if $X^TX X$ is not invertible.
+
+If $X^T X$ is noninvertible, the common causes might be having:
+
+- Redundant features, where two features are very closely related (i.e. they are linearly dependent)
+- Too many features (e.g. m ≤ n). In this case, delete some features or use regularization.
+
+## Evaluation Metrics
 
 r2 score:
 
-$$R^2(y, \hat{y}) = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y_i})^2}{\sum_{i=1}^n(y_i - \bar{y})^2}$$
+$$R^2(y, \hat{y}) = 1 - \frac{\sum_{i=1}^m (y_i - \hat{y_i})^2}{\sum_{i=1}^m (y_i - \bar{y})^2}$$
 
-Best possible score is 1.0 and it can be negative (because the model can be arbitrarily worse). A constant model that always predicts the expected value of y, disregarding the input features, would get a $R^2$ score of 0.0.
+Best possible score is 1.0 and it can be negative (because the model can be arbitrarily worse). A constant model that always predicts the expected value of $y$, disregarding the input features, would get a $R^2$ score of 0.0.
