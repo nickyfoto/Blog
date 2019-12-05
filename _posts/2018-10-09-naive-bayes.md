@@ -7,7 +7,7 @@ tags: [machine learning, naive bayes]
 comments: true
 ---
 
-Before we dive into naive bayes, let's review two probability concepts that this algorithm based one.
+Before we dive into naive bayes, let's review two probability concepts that this algorithm based on.
 
 ### Multiplication rule
 
