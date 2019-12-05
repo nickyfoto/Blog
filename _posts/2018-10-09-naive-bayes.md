@@ -90,7 +90,7 @@ When we vectorize a text into (multivariate) Bernoulli distribution, we just use
 
 If the number of times a particular word occurs is important, $$x$$ becomes a [multinomial distribution](https://newonlinecourses.science.psu.edu/stat504/node/40/).
 
-To see How to implement your own Naive Bayes in python, refer to [here](https://github.com/nickyfoto/learn/blob/master/naive_bayes.ipynb).
+To see How to implement your own Naive Bayes in python, refer to [here](https://github.com/nickyfoto/ml-learn/blob/master/tutorials/naive_bayes.ipynb).
 
 ### References:
 
