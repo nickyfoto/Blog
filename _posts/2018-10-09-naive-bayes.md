@@ -47,11 +47,11 @@ p(x_1, \ldots, x_{50000}|y) &= p(x_1|y)p(x_2|y,x_1)p(x_3|y,x_1,x_2) \cdots p(x_{
 &= \prod_{j=1}^n p(x_j|y)
 \end{aligned}$$
 
-The first equal sign is using **multiplication rule**.
+The first equal sign is based on **multiplication rule**.
 
 The second equal sign is based on **Naive Bayes (NB) assumption**.
 
-The assumption says that $$x_i$$ are **conditionally independent** given $$y$$. For example, two event are conditionally independent $$p(x_{2087} \mid y) = p(x_{2087} \mid y, x_{39831})$$, this is to say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
+The assumption says that $$x_i$$ are **conditionally independent** given $$y$$. For example, if $$p(x_{2087} \mid y) = p(x_{2087} \mid y, x_{39831})$$, we say $$x_{2087}$$ and $$x_{39831}$$ are conditionally independent given $$y$$.
 
 Bayes rule tells us we can get 
 
